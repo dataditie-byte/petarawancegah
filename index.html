@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <title>Peta Rawan Pencegahan</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <style>
+    :root {
+      --navy: #073b66;
+      --blue: #0b69b7;
+      --blue-soft: #eaf5ff;
+      --cyan: #2ec5ce;
+      --white: #ffffff;
+      --bg: #f3f7fb;
+      --text: #183042;
+      --muted: #6b7d8a;
+      --border: #dce7ef;
+      --danger: #d9363e;
+      --warning: #ef8d23;
+      --yellow: #e6b21a;
+      --success: #16945d;
+      --shadow: 0 8px 24px rgba(15, 57, 88, .10);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    }
+
+    body {
+      padding-bottom: calc(88px + env(safe-area-inset-bottom));
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background:
+        linear-gradient(
+          135deg,
+          var(--navy),
+          var(--blue)
+        );
+      color: var(--white);
+      padding:
+        calc(14px + env(safe-area-inset-top))
+        18px
+        18px;
+      box-shadow: 0 5px 18px rgba(6, 57, 101, .22);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.15;
+    }
+
+    .brand p {
+      margin: 5px 0 0;
+      color: rgba(255, 255, 255, .82);
+      font-size: 13px;
+    }
+
+    .refresh-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .14);
+      color: white;
+      font-size: 20px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .hero {
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff,
+          #eaf5ff
+        );
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      margin: 8px 0;
+      font-size: 26px;
+      line-height: 1.15;
+      color: var(--navy);
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 17px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card .label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .stat-card .value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .section-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      margin: 0 0 5px;
+      font-size: 19px;
+      color: var(--navy);
+    }
+
+    .section-subtitle {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .priority-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .priority-item {
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #fbfdff;
+    }
+
+    .priority-main {
+      min-width: 0;
+    }
+
+    .priority-name {
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .priority-meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .badge-tinggi {
+      background: #ffe8e9;
+      color: var(--danger);
+    }
+
+    .badge-sedang {
+      background: #fff0df;
+      color: #b75e00;
+    }
+
+    .badge-pemantauan {
+      background: #fff7cf;
+      color: #7a6200;
+    }
+
+    .badge-rendah {
+      background: #e9f8f0;
+      color: var(--success);
+    }
+
+    #map {
+      height: calc(100vh - 220px);
+      min-height: 500px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .map-legend {
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .legend-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 13px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 7px;
+      color: var(--text);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #cbdbe6;
+      background: white;
+      border-radius: 13px;
+      padding: 13px 14px;
+      outline: none;
+      color: var(--text);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(11, 105, 183, .10);
+    }
+
+    .field textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    .readonly {
+      background: #eef4f8 !important;
+      color: var(--muted) !important;
+    }
+
+    .btn-primary {
+      width: 100%;
+      border: 0;
+      border-radius: 15px;
+      padding: 15px;
+      font-weight: 800;
+      color: white;
+      background:
+        linear-gradient(
+          135deg,
+          var(--navy),
+          var(--blue)
+        );
+      box-shadow: 0 7px 18px rgba(11, 105, 183, .22);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--blue);
+      color: var(--blue);
+      background: white;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 700;
+    }
+
+    .intervention-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .intervention-item {
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 15px;
+      background: #fbfdff;
+    }
+
+    .intervention-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .intervention-title {
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .intervention-date {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .mini-stat {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 10px;
+      border-radius: 12px;
+    }
+
+    .mini-stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .mini-stat strong {
+      color: var(--navy);
+      font-size: 17px;
+    }
+
+    .outcome-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 17px;
+      margin-bottom: 12px;
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff,
+          #f5fbff
+        );
+    }
+
+    .outcome-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .outcome-name {
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .score-change {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .positive {
+      color: var(--success);
+    }
+
+    .neutral {
+      color: var(--warning);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 35px 16px;
+      color: var(--muted);
+    }
+
+    .empty-icon {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: rgba(255, 255, 255, .98);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -5px 20px rgba(23, 63, 93, .09);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .nav-btn {
+      border: 0;
+      background: transparent;
+      padding: 10px 3px 9px;
+      color: #72828d;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .nav-icon {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .nav-btn.active {
+      color: var(--blue);
+    }
+
+    .loading {
+      position: fixed;
+      z-index: 9999;
+      inset: 0;
+      background: rgba(243, 247, 251, .88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .loading-box {
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      text-align: center;
+      min-width: 210px;
+    }
+
+    .spinner {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 12px;
+      border: 4px solid #dbeaf5;
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 10000;
+      left: 18px;
+      right: 18px;
+      bottom: 102px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 15px;
+      padding: 14px 16px;
+      color: white;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .toast.success {
+      background: var(--success);
+    }
+
+    .toast.error {
+      background: var(--danger);
+    }
+
+    @media (min-width: 760px) {
+      .stats {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .field-full {
+        grid-column: 1 / -1;
+      }
+
+      .mini-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .toast {
+        left: auto;
+        right: 25px;
+        bottom: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="loading" class="loading">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <strong>Memuat data...</strong>
+    </div>
+  </div>
+
+  <header class="app-header">
+    <div class="header-top">
+      <div class="brand">
+        <h1>Peta Rawan Pencegahan</h1>
+        <p>Data Bicara, Pencegahan Nyata</p>
+      </div>
+
+      <button
+        class="refresh-btn"
+        onclick="muatSemuaData()"
+        title="Muat ulang"
+      >
+        ↻
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- DASHBOARD -->
+    <section id="page-dashboard" class="page active">
+
+      <div class="hero">
+        <div class="eyebrow">
+          Pencegahan Berbasis Data
+        </div>
+
+        <h2>
+          Dari peta masalah menuju intervensi yang terarah.
+        </h2>
+
+        <p>
+          Area prioritas dibentuk dari konsentrasi titik kejadian
+          terpetakan dan digunakan sebagai dasar awal penyusunan
+          intervensi pencegahan.
+        </p>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="label">TKP Terpetakan</div>
+          <div id="stat-total-tkp" class="value">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="label">Area Hotspot</div>
+          <div id="stat-hotspot" class="value">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="label">Prioritas Tinggi</div>
+          <div id="stat-tinggi" class="value">0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="label">Prioritas Sedang</div>
+          <div id="stat-sedang" class="value">0</div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-title">
+          Area Prioritas Utama
+        </h3>
+
+        <p class="section-subtitle">
+          Hotspot dengan konsentrasi kejadian tertinggi
+          berdasarkan data yang terpetakan.
+        </p>
+
+        <div
+          id="priority-list"
+          class="priority-list"
+        ></div>
+      </div>
+
+    </section>
+
+
+    <!-- PETA -->
+    <section id="page-peta" class="page">
+
+      <div class="map-legend">
+        <div class="legend-item">🔴 Tinggi</div>
+        <div class="legend-item">🟠 Sedang</div>
+        <div class="legend-item">🟡 Pemantauan</div>
+      </div>
+
+      <div id="map"></div>
+
+    </section>
+
+
+    <!-- INTERVENSI -->
+    <section id="page-intervensi" class="page">
+
+      <div class="section-card">
+
+        <h3 class="section-title">
+          Input Intervensi Pencegahan
+        </h3>
+
+        <p class="section-subtitle">
+          Pilih area prioritas dan catat intervensi yang dilakukan.
+        </p>
+
+        <form
+          id="form-intervensi"
+          class="form-grid"
+        >
+
+          <div class="field">
+            <label>Tanggal *</label>
+            <input
+              id="tanggal"
+              type="date"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label>Area Prioritas *</label>
+            <select
+              id="hotspotId"
+              required
+              onchange="pilihHotspot()"
+            >
+              <option value="">
+                Pilih area prioritas
+              </option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Wilayah Sasaran *</label>
+            <input
+              id="wilayahSasaran"
+              required
+              placeholder="Contoh: Kampung Beting"
+            >
+          </div>
+
+          <div class="field">
+            <label>Dasar Intervensi *</label>
+            <select id="dasarIntervensi" required>
+              <option value="">Pilih</option>
+              <option>Peta TKP</option>
+              <option>Konsentrasi Kasus</option>
+              <option>Tren Peningkatan</option>
+              <option>Hasil Pemetaan</option>
+              <option>Laporan Masyarakat</option>
+              <option>Arahan Pimpinan</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Jenis Intervensi *</label>
+            <select id="jenisIntervensi" required>
+              <option value="">Pilih</option>
+              <option>Edukasi</option>
+              <option>Intervensi Remaja</option>
+              <option>Intervensi Keluarga</option>
+              <option>Penguatan Masyarakat</option>
+              <option>Deteksi Dini</option>
+              <option>Rujukan</option>
+              <option>Pendampingan</option>
+              <option>Kampanye</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Kelompok Sasaran *</label>
+            <select id="kelompokSasaran" required>
+              <option value="">Pilih</option>
+              <option>Remaja</option>
+              <option>Keluarga</option>
+              <option>Masyarakat Umum</option>
+              <option>Tokoh Masyarakat</option>
+              <option>Pelajar</option>
+              <option>Pekerja</option>
+              <option>Kelompok Berisiko</option>
+              <option>Penggerak Lokal</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Jumlah Sasaran</label>
+            <input
+              id="jumlahSasaran"
+              type="number"
+              min="0"
+              value="0"
+            >
+          </div>
+
+          <div class="field">
+            <label>Skor Awal</label>
+            <input
+              id="skorAwal"
+              type="number"
+              min="0"
+              max="100"
+              value="0"
+            >
+          </div>
+
+          <div class="field">
+            <label>Skor Akhir</label>
+            <input
+              id="skorAkhir"
+              type="number"
+              min="0"
+              max="100"
+              value="0"
+            >
+          </div>
+
+          <div class="field">
+            <label>Jumlah Rujukan</label>
+            <input
+              id="jumlahRujukan"
+              type="number"
+              min="0"
+              value="0"
+            >
+          </div>
+
+          <div class="field">
+            <label>Jumlah Rehab</label>
+            <input
+              id="jumlahRehab"
+              type="number"
+              min="0"
+              value="0"
+            >
+          </div>
+
+          <div class="field field-full">
+            <label>Tindak Lanjut</label>
+            <textarea
+              id="tindakLanjut"
+              placeholder="Rencana tindak lanjut..."
+            ></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label>URL Foto Kegiatan</label>
+            <input
+              id="fotoKegiatan"
+              type="url"
+              placeholder="https://..."
+            >
+          </div>
+
+          <div class="field field-full">
+            <label>Catatan</label>
+            <textarea
+              id="catatan"
+              placeholder="Catatan tambahan..."
+            ></textarea>
+          </div>
+
+          <input id="latArea" type="hidden">
+          <input id="lngArea" type="hidden">
+
+          <div class="field field-full">
+            <button
+              id="btn-simpan"
+              class="btn-primary"
+              type="submit"
+            >
+              SIMPAN INTERVENSI
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-title">
+          Riwayat Intervensi
+        </h3>
+
+        <p class="section-subtitle">
+          Data kegiatan pencegahan yang telah dicatat.
+        </p>
+
+        <div
+          id="intervention-list"
+          class="intervention-list"
+        ></div>
+      </div>
+
+    </section>
+
+
+    <!-- OUTCOME -->
+    <section id="page-outcome" class="page">
+
+      <div class="section-card">
+
+        <h3 class="section-title">
+          Outcome Awal Pencegahan
+        </h3>
+
+        <p class="section-subtitle">
+          Ringkasan perubahan indikator dari data intervensi.
+          Nilai ini belum menyatakan hubungan sebab-akibat tunggal.
+        </p>
+
+        <div id="outcome-list"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TENTANG -->
+    <section id="page-tentang" class="page">
+
+      <div class="hero">
+
+        <div class="eyebrow">
+          Tentang Sistem
+        </div>
+
+        <h2>
+          Pencegahan yang dimulai dari membaca peta masalah.
+        </h2>
+
+        <p>
+          Sistem ini menghubungkan konsentrasi lokasi kejadian
+          terpetakan dengan pencatatan intervensi pencegahan dan
+          monitoring indikator perubahan wilayah.
+        </p>
+
+      </div>
+
+      <div class="section-card">
+
+        <h3 class="section-title">
+          Prinsip Analisis
+        </h3>
+
+        <p class="section-subtitle">
+          Area prioritas merupakan hasil pengelompokan spasial data
+          terpetakan. Status ini digunakan sebagai indikator awal
+          untuk menentukan prioritas pencegahan dan bukan otomatis
+          merupakan penetapan resmi kawasan rawan narkoba.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <nav class="bottom-nav">
+
+    <button
+      class="nav-btn active"
+      data-page="dashboard"
+      onclick="bukaHalaman('dashboard', this)"
+    >
+      <span class="nav-icon">⌂</span>
+      Dashboard
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="peta"
+      onclick="bukaHalaman('peta', this)"
+    >
+      <span class="nav-icon">⌖</span>
+      Peta
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="intervensi"
+      onclick="bukaHalaman('intervensi', this)"
+    >
+      <span class="nav-icon">✚</span>
+      Intervensi
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="outcome"
+      onclick="bukaHalaman('outcome', this)"
+    >
+      <span class="nav-icon">▥</span>
+      Outcome
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="tentang"
+      onclick="bukaHalaman('tentang', this)"
+    >
+      <span class="nav-icon">ⓘ</span>
+      Tentang
+    </button>
+
+  </nav>
+
+
+  <div id="toast" class="toast"></div>
+
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  ></script>
+
+
+  <script>
+    const API_URL =
+      'https://script.google.com/macros/s/AKfycbwvas8FIP_de6oWKF80MIA4ESVYKRLN4SQkTB6uo-B5wbbOUl7wpTVK_5pHOhbJ5gAh/exec';
+
+    let summaryData = null;
+    let interventionData = [];
+    let outcomeData = [];
+    let map = null;
+    let mapLayer = null;
+
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      async function() {
+
+        document.getElementById('tanggal').value =
+          new Date().toISOString().split('T')[0];
+
+        document
+          .getElementById('form-intervensi')
+          .addEventListener(
+            'submit',
+            simpanIntervensi
+          );
+
+        await muatSemuaData();
+      }
+    );
+
+
+    async function apiGet(action) {
+
+      const url =
+        API_URL +
+        '?action=' +
+        encodeURIComponent(action) +
+        '&t=' +
+        Date.now();
+
+      const response = await fetch(url, {
+        method: 'GET',
+        redirect: 'follow',
+        cache: 'no-store'
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          'HTTP ' + response.status
+        );
+      }
+
+      const data = await response.json();
+
+      if (data.success === false) {
+        throw new Error(
+          data.message || 'API gagal.'
+        );
+      }
+
+      return data;
+    }
+
+
+    async function muatSemuaData() {
+
+      tampilLoading(true);
+
+      try {
+
+        const hasil = await Promise.all([
+          apiGet('summary'),
+          apiGet('intervensi'),
+          apiGet('ringkasan_intervensi')
+        ]);
+
+        summaryData = hasil[0];
+        interventionData = hasil[1].data || [];
+        outcomeData = hasil[2].data || [];
+
+        renderDashboard();
+        isiPilihanHotspot();
+        renderIntervensi();
+        renderOutcome();
+
+        if (map) {
+          renderPeta();
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+        toast(
+          'Gagal memuat data: ' + error.message,
+          'error'
+        );
+
+      } finally {
+
+        tampilLoading(false);
+      }
+    }
+
+
+    function renderDashboard() {
+
+      document.getElementById(
+        'stat-total-tkp'
+      ).textContent =
+        formatAngka(summaryData.totalTKP);
+
+      document.getElementById(
+        'stat-hotspot'
+      ).textContent =
+        formatAngka(summaryData.totalHotspot);
+
+      document.getElementById(
+        'stat-tinggi'
+      ).textContent =
+        formatAngka(summaryData.prioritasTinggi);
+
+      document.getElementById(
+        'stat-sedang'
+      ).textContent =
+        formatAngka(summaryData.prioritasSedang);
+
+      const container =
+        document.getElementById('priority-list');
+
+      container.innerHTML = '';
+
+      const data =
+        summaryData.hotspotUtama || [];
+
+      if (!data.length) {
+
+        container.innerHTML =
+          emptyState(
+            'Belum ada area prioritas.'
+          );
+
+        return;
+      }
+
+      data.slice(0, 10).forEach(function(item) {
+
+        const div =
+          document.createElement('div');
+
+        div.className = 'priority-item';
+
+        div.innerHTML = `
+          <div class="priority-main">
+            <div class="priority-name">
+              ${escapeHtml(item.id)}
+            </div>
+
+            <div class="priority-meta">
+              ${escapeHtml(item.wilayahHukum)}
+              · ${formatAngka(item.jumlahTKP)} TKP
+            </div>
+          </div>
+
+          <span class="
+            badge
+            ${badgeClass(item.prioritas)}
+          ">
+            ${escapeHtml(item.prioritas)}
+          </span>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+
+    function bukaHalaman(page, button) {
+
+      document
+        .querySelectorAll('.page')
+        .forEach(function(el) {
+          el.classList.remove('active');
+        });
+
+      document
+        .getElementById('page-' + page)
+        .classList.add('active');
+
+      document
+        .querySelectorAll('.nav-btn')
+        .forEach(function(el) {
+          el.classList.remove('active');
+        });
+
+      if (button) {
+        button.classList.add('active');
+      }
+
+      if (page === 'peta') {
+
+        setTimeout(function() {
+
+          if (!map) {
+            initMap();
+          }
+
+          map.invalidateSize();
+
+          renderPeta();
+
+        }, 150);
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+
+    function initMap() {
+
+      map = L.map('map').setView(
+        [-0.5, 110],
+        7
+      );
+
+      L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+          maxZoom: 19,
+          attribution:
+            '&copy; OpenStreetMap contributors'
+        }
+      ).addTo(map);
+
+      mapLayer = L.layerGroup().addTo(map);
+    }
+
+
+    function renderPeta() {
+
+      if (
+        !map ||
+        !mapLayer ||
+        !summaryData
+      ) {
+        return;
+      }
+
+      mapLayer.clearLayers();
+
+      const data =
+        summaryData.hotspotUtama || [];
+
+      const bounds = [];
+
+      data.forEach(function(item) {
+
+        const lat = Number(item.lat);
+        const lng = Number(item.lng);
+
+        if (
+          !Number.isFinite(lat) ||
+          !Number.isFinite(lng)
+        ) {
+          return;
+        }
+
+        const circle = L.circleMarker(
+          [lat, lng],
+          {
+            radius: ukuranMarker(item.jumlahTKP),
+            color: warnaPrioritas(item.prioritas),
+            fillColor: warnaPrioritas(item.prioritas),
+            fillOpacity: .58,
+            weight: 2
+          }
+        );
+
+        circle.bindPopup(`
+          <div style="
+            min-width:210px;
+            line-height:1.5
+          ">
+            <strong style="
+              color:#073b66;
+              font-size:16px
+            ">
+              ${escapeHtml(item.id)}
+            </strong>
+
+            <br>
+
+            ${escapeHtml(item.wilayahHukum)}
+
+            <br><br>
+
+            <strong>
+              ${formatAngka(item.jumlahTKP)}
+              TKP terpetakan
+            </strong>
+
+            <br>
+
+            Status:
+            <strong>
+              ${escapeHtml(item.prioritas)}
+            </strong>
+
+            <br><br>
+
+            <button
+              onclick="
+                pilihAreaDariPeta(
+                  '${escapeJs(item.id)}'
+                )
+              "
+              style="
+                border:0;
+                border-radius:10px;
+                padding:10px 12px;
+                background:#0b69b7;
+                color:white;
+                font-weight:700;
+                width:100%
+              "
+            >
+              CATAT INTERVENSI
+            </button>
+          </div>
+        `);
+
+        circle.addTo(mapLayer);
+
+        bounds.push([lat, lng]);
+      });
+
+      if (bounds.length) {
+
+        map.fitBounds(
+          bounds,
+          {
+            padding: [25, 25],
+            maxZoom: 12
+          }
+        );
+      }
+    }
+
+
+    function isiPilihanHotspot() {
+
+      const select =
+        document.getElementById('hotspotId');
+
+      const nilaiLama = select.value;
+
+      select.innerHTML = `
+        <option value="">
+          Pilih area prioritas
+        </option>
+      `;
+
+      const data =
+        summaryData.hotspotUtama || [];
+
+      data.forEach(function(item) {
+
+        const option =
+          document.createElement('option');
+
+        option.value = item.id;
+
+        option.textContent =
+          item.id +
+          ' · ' +
+          item.wilayahHukum +
+          ' · ' +
+          item.jumlahTKP +
+          ' TKP';
+
+        select.appendChild(option);
+      });
+
+      if (nilaiLama) {
+        select.value = nilaiLama;
+      }
+    }
+
+
+    function pilihHotspot() {
+
+      const id =
+        document.getElementById(
+          'hotspotId'
+        ).value;
+
+      const hotspot =
+        cariHotspot(id);
+
+      if (!hotspot) {
+
+        document.getElementById(
+          'latArea'
+        ).value = '';
+
+        document.getElementById(
+          'lngArea'
+        ).value = '';
+
+        return;
+      }
+
+      document.getElementById(
+        'latArea'
+      ).value = hotspot.lat;
+
+      document.getElementById(
+        'lngArea'
+      ).value = hotspot.lng;
+
+      if (
+        !document.getElementById(
+          'wilayahSasaran'
+        ).value
+      ) {
+
+        document.getElementById(
+          'wilayahSasaran'
+        ).value =
+          hotspot.wilayahHukum || '';
+      }
+
+      document.getElementById(
+        'dasarIntervensi'
+      ).value = 'Peta TKP';
+    }
+
+
+    function pilihAreaDariPeta(id) {
+
+      const navButton =
+        document.querySelector(
+          '[data-page="intervensi"]'
+        );
+
+      bukaHalaman(
+        'intervensi',
+        navButton
+      );
+
+      document.getElementById(
+        'hotspotId'
+      ).value = id;
+
+      pilihHotspot();
+
+      setTimeout(function() {
+
+        document.getElementById(
+          'wilayahSasaran'
+        ).focus();
+
+      }, 300);
+    }
+
+
+    function cariHotspot(id) {
+
+      return (
+        summaryData.hotspotUtama || []
+      ).find(function(item) {
+        return item.id === id;
+      });
+    }
+
+
+    async function simpanIntervensi(event) {
+
+      event.preventDefault();
+
+      const tombol =
+        document.getElementById('btn-simpan');
+
+      tombol.disabled = true;
+      tombol.textContent = 'MENYIMPAN...';
+
+      try {
+
+        const data = {
+          tanggal:
+            document.getElementById(
+              'tanggal'
+            ).value,
+
+          hotspotId:
+            document.getElementById(
+              'hotspotId'
+            ).value,
+
+          wilayahSasaran:
+            document.getElementById(
+              'wilayahSasaran'
+            ).value,
+
+          latArea:
+            document.getElementById(
+              'latArea'
+            ).value,
+
+          lngArea:
+            document.getElementById(
+              'lngArea'
+            ).value,
+
+          dasarIntervensi:
+            document.getElementById(
+              'dasarIntervensi'
+            ).value,
+
+          jenisIntervensi:
+            document.getElementById(
+              'jenisIntervensi'
+            ).value,
+
+          kelompokSasaran:
+            document.getElementById(
+              'kelompokSasaran'
+            ).value,
+
+          jumlahSasaran:
+            document.getElementById(
+              'jumlahSasaran'
+            ).value,
+
+          skorAwal:
+            document.getElementById(
+              'skorAwal'
+            ).value,
+
+          skorAkhir:
+            document.getElementById(
+              'skorAkhir'
+            ).value,
+
+          jumlahRujukan:
+            document.getElementById(
+              'jumlahRujukan'
+            ).value,
+
+          jumlahRehab:
+            document.getElementById(
+              'jumlahRehab'
+            ).value,
+
+          tindakLanjut:
+            document.getElementById(
+              'tindakLanjut'
+            ).value,
+
+          fotoKegiatan:
+            document.getElementById(
+              'fotoKegiatan'
+            ).value,
+
+          catatan:
+            document.getElementById(
+              'catatan'
+            ).value
+        };
+
+        const payload = {
+          action: 'simpan_intervensi',
+          data: data
+        };
+
+        const response = await fetch(
+          API_URL,
+          {
+            method: 'POST',
+            redirect: 'follow',
+            body: JSON.stringify(payload)
+          }
+        );
+
+        const hasil =
+          await response.json();
+
+        if (!hasil.success) {
+
+          throw new Error(
+            hasil.message ||
+            'Gagal menyimpan.'
+          );
+        }
+
+        toast(
+          'Intervensi berhasil disimpan.',
+          'success'
+        );
+
+        resetForm();
+
+        await muatSemuaData();
+
+      } catch (error) {
+
+        console.error(error);
+
+        toast(
+          'Gagal menyimpan: ' +
+          error.message,
+          'error'
+        );
+
+      } finally {
+
+        tombol.disabled = false;
+
+        tombol.textContent =
+          'SIMPAN INTERVENSI';
+      }
+    }
+
+
+    function resetForm() {
+
+      document
+        .getElementById('form-intervensi')
+        .reset();
+
+      document.getElementById(
+        'tanggal'
+      ).value =
+        new Date().toISOString().split('T')[0];
+
+      document.getElementById(
+        'jumlahSasaran'
+      ).value = 0;
+
+      document.getElementById(
+        'skorAwal'
+      ).value = 0;
+
+      document.getElementById(
+        'skorAkhir'
+      ).value = 0;
+
+      document.getElementById(
+        'jumlahRujukan'
+      ).value = 0;
+
+      document.getElementById(
+        'jumlahRehab'
+      ).value = 0;
+    }
+
+
+    function renderIntervensi() {
+
+      const container =
+        document.getElementById(
+          'intervention-list'
+        );
+
+      container.innerHTML = '';
+
+      if (!interventionData.length) {
+
+        container.innerHTML =
+          emptyState(
+            'Belum ada intervensi tercatat.'
+          );
+
+        return;
+      }
+
+      interventionData.forEach(function(item) {
+
+        const div =
+          document.createElement('div');
+
+        div.className =
+          'intervention-item';
+
+        div.innerHTML = `
+          <div class="intervention-top">
+
+            <div>
+              <div class="intervention-title">
+                ${escapeHtml(item.jenisIntervensi)}
+              </div>
+
+              <div class="intervention-date">
+                ${formatTanggalIndonesia(item.tanggal)}
+                · ${escapeHtml(item.hotspotId)}
+              </div>
+            </div>
+
+            <span class="badge badge-sedang">
+              ${escapeHtml(item.kelompokSasaran)}
+            </span>
+
+          </div>
+
+          <div style="
+            margin-bottom:12px;
+            color:#536c7c;
+            font-size:13px
+          ">
+            ${escapeHtml(item.wilayahSasaran)}
+          </div>
+
+          <div class="mini-grid">
+
+            <div class="mini-stat">
+              <span>Sasaran</span>
+              <strong>
+                ${formatAngka(item.jumlahSasaran)}
+              </strong>
+            </div>
+
+            <div class="mini-stat">
+              <span>Skor</span>
+              <strong>
+                ${item.skorAwal}
+                →
+                ${item.skorAkhir}
+              </strong>
+            </div>
+
+            <div class="mini-stat">
+              <span>Rujukan</span>
+              <strong>
+                ${formatAngka(item.jumlahRujukan)}
+              </strong>
+            </div>
+
+            <div class="mini-stat">
+              <span>Rehab</span>
+              <strong>
+                ${formatAngka(item.jumlahRehab)}
+              </strong>
+            </div>
+
+          </div>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+
+    function renderOutcome() {
+
+      const container =
+        document.getElementById(
+          'outcome-list'
+        );
+
+      container.innerHTML = '';
+
+      if (!outcomeData.length) {
+
+        container.innerHTML =
+          emptyState(
+            'Outcome akan muncul setelah intervensi dicatat.'
+          );
+
+        return;
+      }
+
+      outcomeData.forEach(function(item) {
+
+        const perubahan =
+          Number(item.perubahanSkor || 0);
+
+        const statusClass =
+          perubahan > 0
+            ? 'positive'
+            : 'neutral';
+
+        const tanda =
+          perubahan > 0
+            ? '+'
+            : '';
+
+        const div =
+          document.createElement('div');
+
+        div.className = 'outcome-card';
+
+        div.innerHTML = `
+          <div class="outcome-header">
+
+            <div>
+              <div class="outcome-name">
+                ${escapeHtml(item.hotspotId)}
+              </div>
+
+              <div class="intervention-date">
+                ${escapeHtml(item.wilayahSasaran)}
+              </div>
+            </div>
+
+            <div class="
+              score-change
+              ${statusClass}
+            ">
+              ${tanda}${perubahan}
+            </div>
+
+          </div>
+
+          <div class="mini-grid">
+
+            <div class="mini-stat">
+              <span>Intervensi</span>
+              <strong>
+                ${formatAngka(item.jumlahIntervensi)}
+              </strong>
+            </div>
+
+            <div class="mini-stat">
+              <span>Terjangkau</span>
+              <strong>
+                ${formatAngka(item.jumlahSasaran)}
+              </strong>
+            </div>
+
+            <div class="mini-stat">
+              <span>Skor Awal</span>
+              <strong>
+                ${item.skorAwal}
+              </strong>
+            </div>
+
+            <div class="mini-stat">
+              <span>Skor Akhir</span>
+              <strong>
+                ${item.skorAkhir}
+              </strong>
+            </div>
+
+            <div class="mini-stat">
+              <span>Rujukan</span>
+              <strong>
+                ${formatAngka(item.jumlahRujukan)}
+              </strong>
+            </div>
+
+            <div class="mini-stat">
+              <span>Rehab</span>
+              <strong>
+                ${formatAngka(item.jumlahRehab)}
+              </strong>
+            </div>
+
+          </div>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+
+    function warnaPrioritas(status) {
+
+      switch (
+        String(status).toUpperCase()
+      ) {
+
+        case 'TINGGI':
+          return '#d9363e';
+
+        case 'SEDANG':
+          return '#ef8d23';
+
+        case 'PEMANTAUAN':
+          return '#e6b21a';
+
+        default:
+          return '#16945d';
+      }
+    }
+
+
+    function ukuranMarker(jumlah) {
+
+      const angka = Number(jumlah || 0);
+
+      return Math.max(
+        8,
+        Math.min(
+          28,
+          7 + Math.sqrt(angka) * 2
+        )
+      );
+    }
+
+
+    function badgeClass(status) {
+
+      const nilai =
+        String(status || '')
+          .toLowerCase();
+
+      if (nilai === 'tinggi') {
+        return 'badge-tinggi';
+      }
+
+      if (nilai === 'sedang') {
+        return 'badge-sedang';
+      }
+
+      if (nilai === 'pemantauan') {
+        return 'badge-pemantauan';
+      }
+
+      return 'badge-rendah';
+    }
+
+
+    function formatAngka(nilai) {
+
+      return Number(nilai || 0)
+        .toLocaleString('id-ID');
+    }
+
+
+    function formatTanggalIndonesia(nilai) {
+
+      if (!nilai) {
+        return '-';
+      }
+
+      const tanggal =
+        new Date(nilai + 'T00:00:00');
+
+      if (isNaN(tanggal.getTime())) {
+        return nilai;
+      }
+
+      return tanggal.toLocaleDateString(
+        'id-ID',
+        {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        }
+      );
+    }
+
+
+    function tampilLoading(status) {
+
+      document
+        .getElementById('loading')
+        .classList.toggle(
+          'hidden',
+          !status
+        );
+    }
+
+
+    function toast(pesan, jenis) {
+
+      const el =
+        document.getElementById('toast');
+
+      el.textContent = pesan;
+
+      el.className =
+        'toast ' +
+        (jenis || 'success');
+
+      el.style.display = 'block';
+
+      clearTimeout(window.toastTimer);
+
+      window.toastTimer =
+        setTimeout(function() {
+
+          el.style.display = 'none';
+
+        }, 3500);
+    }
+
+
+    function emptyState(text) {
+
+      return `
+        <div class="empty-state">
+          <div class="empty-icon">◎</div>
+          <div>${escapeHtml(text)}</div>
+        </div>
+      `;
+    }
+
+
+    function escapeHtml(value) {
+
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+
+    function escapeJs(value) {
+
+      return String(value || '')
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, "\\'");
+    }
+  </script>
+
+</body>
+</html>
