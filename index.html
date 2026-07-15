@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -18,73 +20,71 @@
 <style>
 
 :root {
-  --navy: #064a7b;
-  --blue: #0879c9;
-  --blue-soft: #eaf6ff;
-  --bg: #eef5fa;
-  --white: #ffffff;
-  --text: #17374e;
-  --muted: #6c8090;
-  --border: #d9e6ef;
+  --navy:#064a7b;
+  --blue:#0879c9;
+  --blue-soft:#eaf6ff;
 
-  --red: #df3c43;
-  --orange: #f2782c;
-  --yellow: #f6bd27;
-  --green: #21a36b;
+  --bg:#eef5fa;
+  --white:#ffffff;
+
+  --text:#17374e;
+  --muted:#6c8090;
+  --border:#d9e6ef;
+
+  --red:#df3c43;
+  --orange:#f2782c;
+  --yellow:#f6bd27;
+  --green:#21a36b;
 
   --shadow:
-    0 7px 22px rgba(22, 72, 108, .09);
+    0 7px 22px rgba(22,72,108,.09);
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing:border-box;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
 
   font-family:
     Arial,
     Helvetica,
     sans-serif;
 
-  background: var(--bg);
-  color: var(--text);
+  background:var(--bg);
+  color:var(--text);
 }
 
 body {
   padding-bottom:
-    calc(74px + env(safe-area-inset-bottom));
+    calc(76px + env(safe-area-inset-bottom));
 }
 
 button,
 input,
 select,
 textarea {
-  font: inherit;
+  font:inherit;
 }
 
 button {
-  cursor: pointer;
+  cursor:pointer;
 }
 
 .hidden {
-  display: none !important;
+  display:none !important;
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 
 header {
-  position: sticky;
-
-  top: 0;
-
-  z-index: 2000;
+  position:sticky;
+  top:0;
+  z-index:2000;
 
   background:
     linear-gradient(
@@ -93,7 +93,7 @@ header {
       var(--blue)
     );
 
-  color: white;
+  color:white;
 
   padding:
     calc(14px + env(safe-area-inset-top))
@@ -101,96 +101,80 @@ header {
     14px;
 
   box-shadow:
-    0 5px 20px
-    rgba(0, 60, 100, .20);
+    0 5px 20px rgba(0,60,100,.20);
 }
 
 .header-row {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
 }
 
 .brand h1 {
-  margin: 0;
-
-  font-size: 21px;
+  margin:0;
+  font-size:21px;
 }
 
 .brand p {
-  margin: 5px 0 0;
-
-  font-size: 12px;
-
-  opacity: .82;
+  margin:5px 0 0;
+  font-size:12px;
+  opacity:.82;
 }
 
 .refresh {
-  width: 42px;
+  width:42px;
+  height:42px;
 
-  height: 42px;
-
-  border-radius: 14px;
+  border-radius:14px;
 
   border:
-    1px solid
-    rgba(255, 255, 255, .25);
+    1px solid rgba(255,255,255,.25);
 
   background:
-    rgba(255, 255, 255, .12);
+    rgba(255,255,255,.12);
 
-  color: white;
-
-  font-size: 21px;
+  color:white;
+  font-size:21px;
 }
 
 
-/* =========================================================
-   MAIN
-========================================================= */
+/* MAIN */
 
 main {
-  max-width: 1100px;
-
-  margin: auto;
+  max-width:1100px;
+  margin:auto;
 }
 
 .page {
-  display: none;
+  display:none;
 }
 
 .page.active {
-  display: block;
+  display:block;
 }
 
 .dashboard-wrap,
 .content-wrap {
-  padding: 18px;
+  padding:18px;
 }
 
 
-/* =========================================================
-   CARDS
-========================================================= */
+/* CARD */
 
 .card {
-  background: white;
+  background:white;
 
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 20px;
+  border-radius:20px;
 
-  padding: 18px;
+  padding:18px;
 
-  margin-bottom: 16px;
+  margin-bottom:16px;
 
-  box-shadow: var(--shadow);
+  box-shadow:var(--shadow);
 }
 
 .source-card {
@@ -203,326 +187,303 @@ main {
 }
 
 .eyebrow {
-  color: var(--blue);
+  color:var(--blue);
 
-  font-size: 11px;
+  font-size:11px;
+  font-weight:800;
 
-  font-weight: 800;
-
-  letter-spacing: 1px;
+  letter-spacing:1px;
 }
 
 .source-name {
-  margin: 7px 0 6px;
+  margin:7px 0 6px;
 
-  color: var(--navy);
+  color:var(--navy);
 
-  font-size: 24px;
-
-  font-weight: 800;
+  font-size:24px;
+  font-weight:800;
 }
 
 .source-desc {
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 14px;
-
-  line-height: 1.55;
+  font-size:14px;
+  line-height:1.55;
 }
 
+
+/* SOURCE META */
+
 .source-meta {
-  margin-top: 16px;
+  margin-top:16px;
 
-  display: grid;
+  display:grid;
+  grid-template-columns:1fr 1fr;
 
-  grid-template-columns:
-    1fr 1fr;
-
-  gap: 9px;
+  gap:9px;
 }
 
 .meta-box {
-  padding: 11px;
+  padding:11px;
 
-  border-radius: 13px;
+  border-radius:13px;
 
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  background: white;
+  background:white;
 }
 
 .meta-box span {
-  display: block;
+  display:block;
 
-  font-size: 10px;
+  font-size:10px;
 
-  color: var(--muted);
+  color:var(--muted);
 }
 
 .meta-box strong {
-  display: block;
+  display:block;
 
-  margin-top: 4px;
+  margin-top:4px;
 
-  font-size: 13px;
+  font-size:13px;
 
-  color: var(--navy);
+  color:var(--navy);
 }
 
 
-/* =========================================================
-   FLOW
-========================================================= */
+/* FLOW */
 
 .flow {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .flow-item {
-  width: 100%;
+  width:100%;
 
-  padding: 13px;
+  padding:13px;
 
-  border-radius: 15px;
+  border-radius:15px;
 
-  text-align: center;
+  text-align:center;
 
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  background: #fafdff;
+  background:#fafdff;
 }
 
 .flow-item strong {
-  display: block;
+  display:block;
 
-  font-size: 19px;
+  font-size:19px;
 
-  color: var(--navy);
+  color:var(--navy);
 }
 
 .flow-item span {
-  font-size: 11px;
-
-  color: var(--muted);
+  font-size:11px;
+  color:var(--muted);
 }
 
 .arrow {
-  color: var(--blue);
+  color:var(--blue);
 
-  font-size: 20px;
+  font-size:20px;
 
-  padding: 5px;
+  padding:5px;
 }
 
 
-/* =========================================================
-   STATS
-========================================================= */
+/* STATS */
 
 .stats {
-  display: grid;
+  display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
-  gap: 10px;
+  gap:10px;
+
+  margin-bottom:16px;
 }
 
 .stat {
-  background: white;
+  background:white;
 
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 17px;
+  border-radius:17px;
 
-  padding: 15px;
+  padding:15px;
 
-  box-shadow: var(--shadow);
+  box-shadow:var(--shadow);
 }
 
 .stat span {
-  display: block;
+  display:block;
 
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 11px;
+  font-size:11px;
 
-  margin-bottom: 6px;
+  margin-bottom:6px;
 }
 
 .stat strong {
-  font-size: 27px;
+  font-size:27px;
 
-  color: var(--navy);
+  color:var(--navy);
 }
 
 
-/* =========================================================
-   4R DASHBOARD
-========================================================= */
+/* MODEL 4R */
 
 .four-r-grid {
-  display: grid;
+  display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
-  gap: 10px;
+  gap:10px;
 }
 
 .four-r {
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 17px;
+  border-radius:17px;
 
-  padding: 15px;
+  padding:15px;
 
-  background: #fbfdff;
+  background:#fbfdff;
 }
 
 .four-r-icon {
-  font-size: 25px;
+  font-size:25px;
 
-  margin-bottom: 8px;
+  margin-bottom:8px;
 }
 
 .four-r strong {
-  display: block;
+  display:block;
 
-  color: var(--navy);
+  color:var(--navy);
 
-  margin-bottom: 5px;
+  margin-bottom:5px;
 }
 
 .four-r span {
-  display: block;
+  display:block;
 
-  font-size: 11px;
+  font-size:11px;
 
-  color: var(--muted);
+  color:var(--muted);
 
-  line-height: 1.45;
+  line-height:1.45;
 }
 
 
-/* =========================================================
-   MAP
-========================================================= */
+/* MAP */
 
 .map-toolbar {
-  padding: 12px;
+  padding:12px;
 
-  background: white;
+  background:white;
 
   border-bottom:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 }
 
 .filters {
-  display: grid;
+  display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
-  gap: 8px;
+  gap:8px;
 }
 
 .filters select {
-  width: 100%;
+  width:100%;
 
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 12px;
+  border-radius:12px;
 
-  padding: 10px;
+  padding:10px;
 
-  background: white;
+  background:white;
 }
 
 .layers {
-  display: flex;
+  display:flex;
 
-  gap: 7px;
+  gap:7px;
 
-  overflow-x: auto;
+  overflow-x:auto;
 
-  padding-top: 9px;
+  padding-top:9px;
 }
 
 .layer-btn {
-  flex: none;
+  flex:none;
 
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  background: white;
+  background:white;
 
-  padding: 8px 11px;
+  padding:8px 11px;
 
-  border-radius: 999px;
+  border-radius:999px;
 
-  font-size: 11px;
-
-  font-weight: 700;
+  font-size:11px;
+  font-weight:700;
 }
 
 .layer-btn.active {
-  border-color: var(--blue);
+  border-color:var(--blue);
 
-  background: var(--blue-soft);
+  background:var(--blue-soft);
 
-  color: var(--blue);
+  color:var(--blue);
 }
 
 #map {
-  width: 100%;
+  width:100%;
 
   height:
     calc(100vh - 224px);
 
-  min-height: 500px;
+  min-height:500px;
 }
 
 
-/* =========================================================
-   BOTTOM DETAIL SHEET
-========================================================= */
+/* DETAIL SHEET */
 
 .detail-backdrop {
-  position: fixed;
+  position:fixed;
+  inset:0;
 
-  inset: 0;
-
-  z-index: 2900;
+  z-index:2900;
 
   background:
-    rgba(0, 0, 0, .18);
+    rgba(0,0,0,.18);
 }
 
 .detail-sheet {
-  position: fixed;
+  position:fixed;
 
-  z-index: 3000;
+  z-index:3000;
 
-  left: 0;
-
-  right: 0;
+  left:0;
+  right:0;
 
   bottom:
     calc(
@@ -530,20 +491,20 @@ main {
       env(safe-area-inset-bottom)
     );
 
-  background: white;
+  background:white;
 
   border-radius:
     24px 24px 0 0;
 
-  padding: 10px 18px 22px;
+  padding:
+    10px 18px 22px;
 
   box-shadow:
-    0 -10px 35px
-    rgba(13, 57, 87, .25);
+    0 -10px 35px rgba(13,57,87,.25);
 
-  max-height: 68vh;
+  max-height:70vh;
 
-  overflow: auto;
+  overflow:auto;
 
   animation:
     slideUp .25s ease-out;
@@ -552,107 +513,103 @@ main {
 @keyframes slideUp {
 
   from {
-    transform:
-      translateY(100%);
+    transform:translateY(100%);
   }
 
   to {
-    transform:
-      translateY(0);
+    transform:translateY(0);
   }
 
 }
 
 .sheet-handle {
-  width: 50px;
+  width:50px;
+  height:5px;
 
-  height: 5px;
+  background:#c7d3dc;
 
-  background: #c7d3dc;
-
-  border-radius: 999px;
+  border-radius:999px;
 
   margin:
     0 auto 16px;
 }
 
 .sheet-label {
-  color: var(--blue);
+  color:var(--blue);
 
-  font-size: 11px;
+  font-size:11px;
 
-  font-weight: 800;
+  font-weight:800;
 
-  letter-spacing: .7px;
+  letter-spacing:.7px;
 }
 
 .sheet-title {
-  margin: 6px 0;
+  margin:6px 0;
 
-  color: var(--navy);
+  color:var(--navy);
 
-  font-size: 21px;
+  font-size:21px;
 }
 
 .sheet-sub {
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 13px;
+  font-size:13px;
 
-  line-height: 1.5;
+  line-height:1.5;
 }
 
 .detail-grid {
-  display: grid;
+  display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
-  gap: 8px;
+  gap:8px;
 
-  margin-top: 15px;
+  margin-top:15px;
 }
 
 .detail-box {
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 13px;
+  border-radius:13px;
 
-  padding: 11px;
+  padding:11px;
 }
 
 .detail-box span {
-  display: block;
+  display:block;
 
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 10px;
+  font-size:10px;
 }
 
 .detail-box strong {
-  display: block;
+  display:block;
 
-  margin-top: 5px;
+  margin-top:5px;
 
-  color: var(--navy);
+  color:var(--navy);
 
-  line-height: 1.5;
+  line-height:1.5;
 
-  overflow-wrap: anywhere;
+  overflow-wrap:anywhere;
 }
 
 .action-button {
-  width: 100%;
+  width:100%;
 
-  margin-top: 14px;
+  margin-top:14px;
 
-  border: 0;
+  border:0;
 
-  border-radius: 14px;
+  border-radius:14px;
 
-  padding: 14px;
+  padding:14px;
 
   background:
     linear-gradient(
@@ -661,90 +618,114 @@ main {
       var(--blue)
     );
 
-  color: white;
+  color:white;
 
-  font-weight: 800;
+  font-weight:800;
 }
 
 
-/* =========================================================
-   FORM
-========================================================= */
+/* FORM */
 
 .section-title {
-  margin: 0 0 6px;
+  margin:0 0 6px;
 
-  color: var(--navy);
+  color:var(--navy);
 }
 
 .section-desc {
-  margin: 0 0 16px;
+  margin:0 0 16px;
 
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 13px;
+  font-size:13px;
 
-  line-height: 1.5;
+  line-height:1.55;
 }
 
 .form-grid {
-  display: grid;
+  display:grid;
 
-  gap: 12px;
+  gap:12px;
 }
 
 .field label {
-  display: block;
+  display:flex;
 
-  font-size: 12px;
+  align-items:center;
 
-  font-weight: 700;
+  gap:5px;
 
-  margin-bottom: 6px;
+  font-size:12px;
+
+  font-weight:700;
+
+  margin-bottom:6px;
+}
+
+.info-btn {
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  width:19px;
+
+  height:19px;
+
+  border-radius:50%;
+
+  border:0;
+
+  background:var(--blue-soft);
+
+  color:var(--blue);
+
+  font-size:11px;
+
+  font-weight:800;
 }
 
 .field input,
 .field select,
 .field textarea {
-  width: 100%;
+  width:100%;
 
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 13px;
+  border-radius:13px;
 
-  padding: 12px;
+  padding:12px;
 
-  background: white;
+  background:white;
 
-  outline: none;
+  outline:none;
 }
 
 .field textarea {
-  min-height: 90px;
+  min-height:90px;
 
-  resize: vertical;
+  resize:vertical;
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: var(--blue);
+  border-color:var(--blue);
 
   box-shadow:
-    0 0 0 3px
-    rgba(8, 121, 201, .10);
+    0 0 0 3px rgba(8,121,201,.10);
 }
 
 .save-btn {
-  width: 100%;
+  width:100%;
 
-  padding: 14px;
+  padding:14px;
 
-  border: 0;
+  border:0;
 
-  border-radius: 14px;
+  border-radius:14px;
 
   background:
     linear-gradient(
@@ -753,59 +734,53 @@ main {
       var(--blue)
     );
 
-  color: white;
+  color:white;
 
-  font-weight: 800;
+  font-weight:800;
 }
 
 
-/* =========================================================
-   INTERVENTION
-========================================================= */
+/* RIWAYAT */
 
 .intervention-item {
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 15px;
+  border-radius:15px;
 
-  padding: 14px;
+  padding:14px;
 
-  margin-bottom: 10px;
+  margin-bottom:10px;
 
-  background: #fbfdff;
+  background:#fbfdff;
 }
 
 .intervention-item strong {
-  color: var(--navy);
+  color:var(--navy);
 }
 
 .intervention-meta {
-  margin-top: 5px;
+  margin-top:5px;
 
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 12px;
+  font-size:12px;
 
-  line-height: 1.6;
+  line-height:1.6;
 }
 
 
-/* =========================================================
-   OUTCOME 4R
-========================================================= */
+/* OUTCOME */
 
 .outcome-card {
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 18px;
+  border-radius:20px;
 
-  padding: 16px;
+  padding:16px;
 
-  margin-bottom: 13px;
+  margin-bottom:15px;
 
   background:
     linear-gradient(
@@ -816,131 +791,274 @@ main {
 }
 
 .outcome-title {
-  font-size: 18px;
+  font-size:18px;
 
-  font-weight: 800;
+  font-weight:800;
 
-  color: var(--navy);
+  color:var(--navy);
 }
 
 .outcome-area {
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 12px;
+  font-size:12px;
 
-  margin-top: 4px;
+  margin-top:4px;
 
-  margin-bottom: 14px;
+  margin-bottom:14px;
+}
+
+.outcome-status {
+  border-radius:16px;
+
+  padding:15px;
+
+  margin-bottom:12px;
+
+  background:#f7fafc;
+
+  border:
+    1px solid var(--border);
+}
+
+.outcome-status-label {
+  font-size:10px;
+
+  font-weight:800;
+
+  color:var(--muted);
+
+  letter-spacing:.8px;
+}
+
+.outcome-status-title {
+  margin-top:6px;
+
+  font-size:19px;
+
+  font-weight:800;
+
+  color:var(--navy);
+}
+
+.outcome-status-text {
+  margin-top:8px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.55;
 }
 
 .r-block {
   border:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  border-radius: 14px;
+  border-radius:14px;
 
-  padding: 13px;
+  padding:13px;
 
-  margin-bottom: 9px;
+  margin-bottom:9px;
 
-  background: white;
+  background:white;
 }
 
 .r-title {
-  font-size: 12px;
+  font-size:12px;
 
-  font-weight: 800;
+  font-weight:800;
 
-  color: var(--blue);
+  color:var(--blue);
 
-  margin-bottom: 8px;
+  margin-bottom:8px;
+}
+
+.r-status {
+  display:inline-block;
+
+  margin-bottom:9px;
+
+  padding:5px 8px;
+
+  border-radius:999px;
+
+  background:var(--blue-soft);
+
+  color:var(--blue);
+
+  font-size:10px;
+
+  font-weight:800;
+}
+
+.r-interpretasi {
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.55;
+
+  margin-bottom:10px;
 }
 
 .r-values {
-  display: grid;
+  display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
-  gap: 7px;
+  gap:7px;
 }
 
 .r-value {
-  background: #f7fafc;
+  background:#f7fafc;
 
-  border-radius: 10px;
+  border-radius:10px;
 
-  padding: 9px;
+  padding:9px;
 }
 
 .r-value span {
-  display: block;
+  display:block;
 
-  font-size: 10px;
+  font-size:10px;
 
-  color: var(--muted);
+  color:var(--muted);
 }
 
 .r-value strong {
-  display: block;
+  display:block;
 
-  margin-top: 4px;
+  margin-top:4px;
 
-  color: var(--navy);
+  color:var(--navy);
 }
 
 .tag-list {
-  display: flex;
+  display:flex;
 
-  flex-wrap: wrap;
+  flex-wrap:wrap;
 
-  gap: 6px;
+  gap:6px;
 }
 
 .tag {
-  display: inline-block;
+  display:inline-block;
 
-  background: var(--blue-soft);
+  background:var(--blue-soft);
 
-  color: var(--blue);
+  color:var(--blue);
 
-  padding: 6px 9px;
+  padding:6px 9px;
 
-  border-radius: 999px;
+  border-radius:999px;
 
-  font-size: 11px;
+  font-size:11px;
 
-  font-weight: 700;
+  font-weight:700;
 }
 
 .trend-down {
-  color: var(--green) !important;
+  color:var(--green) !important;
 }
 
 .trend-up {
-  color: var(--red) !important;
+  color:var(--red) !important;
 }
 
 .trend-stable {
-  color: var(--orange) !important;
+  color:var(--orange) !important;
 }
 
 
-/* =========================================================
-   BOTTOM NAV
-========================================================= */
+/* PANDUAN */
+
+.guide-card {
+  border:
+    1px solid var(--border);
+
+  border-radius:17px;
+
+  padding:15px;
+
+  margin-bottom:12px;
+
+  background:#fbfdff;
+}
+
+.guide-title {
+  color:var(--navy);
+
+  font-weight:800;
+
+  font-size:17px;
+}
+
+.guide-question {
+  margin-top:7px;
+
+  color:var(--blue);
+
+  font-size:13px;
+
+  font-weight:700;
+
+  line-height:1.5;
+}
+
+.guide-text {
+  margin-top:8px;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  line-height:1.6;
+}
+
+.guide-list {
+  margin:
+    8px 0 0;
+
+  padding-left:20px;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  line-height:1.7;
+}
+
+.method-note {
+  border-left:
+    4px solid var(--orange);
+
+  background:#fff8ee;
+
+  padding:13px;
+
+  border-radius:
+    0 13px 13px 0;
+
+  color:#6c572e;
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+
+/* BOTTOM NAV */
 
 .bottom-nav {
-  position: fixed;
+  position:fixed;
 
-  z-index: 4000;
+  z-index:4000;
 
-  bottom: 0;
-
-  left: 0;
-
-  right: 0;
+  bottom:0;
+  left:0;
+  right:0;
 
   height:
     calc(
@@ -951,92 +1069,85 @@ main {
   padding-bottom:
     env(safe-area-inset-bottom);
 
-  background: white;
+  background:white;
 
   border-top:
-    1px solid
-    var(--border);
+    1px solid var(--border);
 
-  display: grid;
+  display:grid;
 
   grid-template-columns:
-    repeat(5, 1fr);
+    repeat(5,1fr);
 }
 
 .nav-btn {
-  border: 0;
+  border:0;
 
-  background: white;
+  background:white;
 
-  color: #74848f;
+  color:#74848f;
 
-  font-size: 10px;
+  font-size:10px;
 }
 
 .nav-btn span {
-  display: block;
+  display:block;
 
-  font-size: 22px;
+  font-size:22px;
 
-  margin-bottom: 3px;
+  margin-bottom:3px;
 }
 
 .nav-btn.active {
-  color: var(--blue);
+  color:var(--blue);
 }
 
 
-/* =========================================================
-   LOADING + TOAST
-========================================================= */
+/* LOADING */
 
 .loading {
-  position: fixed;
+  position:fixed;
 
-  inset: 0;
+  inset:0;
 
-  z-index: 9000;
+  z-index:9000;
 
   background:
-    rgba(239, 246, 251, .90);
+    rgba(239,246,251,.90);
 
-  display: flex;
+  display:flex;
 
-  justify-content: center;
+  justify-content:center;
 
-  align-items: center;
+  align-items:center;
 }
 
 .loader-box {
-  background: white;
+  background:white;
 
-  border-radius: 18px;
+  border-radius:18px;
 
-  padding: 22px;
+  padding:22px;
 
   box-shadow:
-    0 8px 25px
-    rgba(0, 0, 0, .12);
+    0 8px 25px rgba(0,0,0,.12);
 
-  text-align: center;
+  text-align:center;
 }
 
 .spinner {
-  width: 37px;
-
-  height: 37px;
+  width:37px;
+  height:37px;
 
   margin:
     auto auto 10px;
 
   border:
-    4px solid
-    #d6e6f1;
+    4px solid #d6e6f1;
 
-  border-top-color:
-    var(--blue);
+  border-top-color:var(--blue);
 
-  border-radius: 50%;
+  border-radius:50%;
 
   animation:
     spin .8s linear infinite;
@@ -1045,71 +1156,69 @@ main {
 @keyframes spin {
 
   to {
-    transform:
-      rotate(360deg);
+    transform:rotate(360deg);
   }
 
 }
 
+
+/* TOAST */
+
 .toast {
-  display: none;
+  display:none;
 
-  position: fixed;
+  position:fixed;
 
-  z-index: 10000;
+  z-index:10000;
 
-  bottom: 90px;
+  bottom:90px;
 
-  left: 15px;
+  left:15px;
+  right:15px;
 
-  right: 15px;
+  background:var(--green);
 
-  background: var(--green);
+  color:white;
 
-  color: white;
+  padding:13px;
 
-  padding: 13px;
+  border-radius:14px;
 
-  border-radius: 14px;
+  font-weight:700;
 
-  font-weight: 700;
-
-  box-shadow: var(--shadow);
+  box-shadow:var(--shadow);
 }
 
 .toast.error {
-  background: var(--red);
+  background:var(--red);
 }
 
 
-/* =========================================================
-   DESKTOP
-========================================================= */
+/* DESKTOP */
 
-@media (min-width: 750px) {
+@media (min-width:750px) {
 
   .stats {
     grid-template-columns:
-      repeat(4, 1fr);
+      repeat(4,1fr);
   }
 
   .source-meta {
     grid-template-columns:
-      repeat(4, 1fr);
+      repeat(4,1fr);
   }
 
   .flow {
-    flex-direction: row;
+    flex-direction:row;
   }
 
   .arrow {
-    transform:
-      rotate(-90deg);
+    transform:rotate(-90deg);
   }
 
   .four-r-grid {
     grid-template-columns:
-      repeat(4, 1fr);
+      repeat(4,1fr);
   }
 
   .form-grid {
@@ -1123,11 +1232,10 @@ main {
   }
 
   .detail-sheet {
-    left: 50%;
+    left:50%;
+    right:auto;
 
-    right: auto;
-
-    width: 700px;
+    width:700px;
 
     max-width:
       calc(100% - 30px);
@@ -1139,15 +1247,12 @@ main {
 }
 
 </style>
+
 </head>
 
 
 <body>
 
-
-<!-- ======================================================
-     LOADING
-====================================================== -->
 
 <div
   id="loading"
@@ -1159,7 +1264,7 @@ main {
     <div class="spinner"></div>
 
     <strong>
-      Memuat data SiPerawan...
+      Memuat data...
     </strong>
 
   </div>
@@ -1167,50 +1272,39 @@ main {
 </div>
 
 
-<!-- ======================================================
-     HEADER
-====================================================== -->
-
 <header>
 
-  <div class="header-row">
+<div class="header-row">
 
-    <div class="brand">
+  <div class="brand">
 
-      <h1>
-        Peta Rawan Pencegahan
-      </h1>
+    <h1>
+      Peta Rawan Pencegahan
+    </h1>
 
-      <p>
-        Data Bicara, Pencegahan Nyata
-      </p>
-
-    </div>
-
-
-    <button
-      class="refresh"
-      onclick="loadAll()"
-      title="Muat ulang"
-    >
-      ↻
-    </button>
+    <p>
+      Data Bicara, Pencegahan Nyata
+    </p>
 
   </div>
+
+
+  <button
+    class="refresh"
+    onclick="loadAll()"
+  >
+    ↻
+  </button>
+
+</div>
 
 </header>
 
 
-<!-- ======================================================
-     MAIN
-====================================================== -->
-
 <main>
 
 
-<!-- ======================================================
-     DASHBOARD
-====================================================== -->
+<!-- DASHBOARD -->
 
 <section
   id="page-dashboard"
@@ -1220,325 +1314,325 @@ main {
 <div class="dashboard-wrap">
 
 
-  <div class="card source-card">
+<div class="card source-card">
 
-    <div class="eyebrow">
-      SUMBER DATA PEMETAAN
+  <div class="eyebrow">
+    SUMBER DATA PEMETAAN
+  </div>
+
+
+  <div
+    id="source-name"
+    class="source-name"
+  >
+    SiPerawan Kalbar
+  </div>
+
+
+  <div
+    id="source-desc"
+    class="source-desc"
+  >
+    Basis data pemetaan TKP.
+  </div>
+
+
+  <div class="source-meta">
+
+    <div class="meta-box">
+
+      <span>Jenis Data</span>
+
+      <strong>
+        Data TKP Terpetakan
+      </strong>
+
     </div>
 
 
-    <div
-      id="source-name"
-      class="source-name"
-    >
-      SiPerawan Kalbar
+    <div class="meta-box">
+
+      <span>Wilayah</span>
+
+      <strong>
+        Kalimantan Barat
+      </strong>
+
     </div>
 
 
-    <div
-      id="source-desc"
-      class="source-desc"
-    >
-      Basis data pemetaan TKP.
+    <div class="meta-box">
+
+      <span>Periode Awal</span>
+
+      <strong id="periode-awal">
+        -
+      </strong>
+
     </div>
 
 
-    <div class="source-meta">
+    <div class="meta-box">
 
-      <div class="meta-box">
+      <span>Periode Akhir</span>
 
-        <span>
-          Jenis Data
-        </span>
-
-        <strong>
-          Data TKP Terpetakan
-        </strong>
-
-      </div>
-
-
-      <div class="meta-box">
-
-        <span>
-          Wilayah
-        </span>
-
-        <strong>
-          Kalimantan Barat
-        </strong>
-
-      </div>
-
-
-      <div class="meta-box">
-
-        <span>
-          Periode Awal
-        </span>
-
-        <strong id="periode-awal">
-          -
-        </strong>
-
-      </div>
-
-
-      <div class="meta-box">
-
-        <span>
-          Periode Akhir
-        </span>
-
-        <strong id="periode-akhir">
-          -
-        </strong>
-
-      </div>
+      <strong id="periode-akhir">
+        -
+      </strong>
 
     </div>
 
   </div>
 
-
-  <div class="card">
-
-    <div class="eyebrow">
-      ALUR ANALISIS
-    </div>
+</div>
 
 
-    <div class="flow">
+<div class="card">
 
-      <div class="flow-item">
-
-        <strong>
-          SiPerawan
-        </strong>
-
-        <span>
-          Data sumber
-        </span>
-
-      </div>
-
-
-      <div class="arrow">
-        ↓
-      </div>
-
-
-      <div class="flow-item">
-
-        <strong id="flow-tkp">
-          0
-        </strong>
-
-        <span>
-          TKP Terpetakan
-        </span>
-
-      </div>
-
-
-      <div class="arrow">
-        ↓
-      </div>
-
-
-      <div class="flow-item">
-
-        <strong>
-          Analisis Spasial
-        </strong>
-
-        <span>
-          Radius kedekatan
-        </span>
-
-      </div>
-
-
-      <div class="arrow">
-        ↓
-      </div>
-
-
-      <div class="flow-item">
-
-        <strong id="flow-klaster">
-          0
-        </strong>
-
-        <span>
-          Klaster Spasial
-        </span>
-
-      </div>
-
-
-      <div class="arrow">
-        ↓
-      </div>
-
-
-      <div class="flow-item">
-
-        <strong>
-          Prioritas
-        </strong>
-
-        <span>
-          Pencegahan
-        </span>
-
-      </div>
-
-    </div>
-
+  <div class="eyebrow">
+    ALUR ANALISIS
   </div>
 
 
-  <div class="stats">
+  <div class="flow">
 
-    <div class="stat">
+    <div class="flow-item">
+
+      <strong>
+        SiPerawan
+      </strong>
+
+      <span>
+        Data sumber
+      </span>
+
+    </div>
+
+
+    <div class="arrow">
+      ↓
+    </div>
+
+
+    <div class="flow-item">
+
+      <strong id="flow-tkp">
+        0
+      </strong>
 
       <span>
         TKP Terpetakan
       </span>
 
-      <strong id="stat-tkp">
-        0
+    </div>
+
+
+    <div class="arrow">
+      ↓
+    </div>
+
+
+    <div class="flow-item">
+
+      <strong>
+        Analisis Spasial
       </strong>
+
+      <span>
+        Radius kedekatan
+      </span>
 
     </div>
 
 
-    <div class="stat">
+    <div class="arrow">
+      ↓
+    </div>
+
+
+    <div class="flow-item">
+
+      <strong id="flow-klaster">
+        0
+      </strong>
 
       <span>
         Klaster Spasial
       </span>
 
-      <strong id="stat-klaster">
-        0
-      </strong>
-
     </div>
 
 
-    <div class="stat">
-
-      <span>
-        Prioritas Tinggi
-      </span>
-
-      <strong id="stat-tinggi">
-        0
-      </strong>
-
+    <div class="arrow">
+      ↓
     </div>
 
 
-    <div class="stat">
+    <div class="flow-item">
+
+      <strong>
+        Prioritas
+      </strong>
 
       <span>
-        Prioritas Sedang
+        Pencegahan
       </span>
-
-      <strong id="stat-sedang">
-        0
-      </strong>
 
     </div>
 
   </div>
 
+</div>
 
-  <div class="card">
 
-    <div class="eyebrow">
-      MODEL OUTCOME PENCEGAHAN
+<div class="stats">
+
+  <div class="stat">
+
+    <span>
+      TKP Terpetakan
+    </span>
+
+    <strong id="stat-tkp">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="stat">
+
+    <span>
+      Klaster Spasial
+    </span>
+
+    <strong id="stat-klaster">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="stat">
+
+    <span>
+      Prioritas Tinggi
+    </span>
+
+    <strong id="stat-tinggi">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="stat">
+
+    <span>
+      Prioritas Sedang
+    </span>
+
+    <strong id="stat-sedang">
+      0
+    </strong>
+
+  </div>
+
+</div>
+
+
+<div class="card">
+
+  <div class="eyebrow">
+    MODEL MONITORING OUTCOME
+  </div>
+
+
+  <h2 class="source-name">
+    4R Outcome Pencegahan Wilayah
+  </h2>
+
+
+  <p class="section-desc">
+
+    Outcome dibaca sebagai perjalanan perkembangan
+    intervensi pada klaster prioritas.
+
+  </p>
+
+
+  <div class="four-r-grid">
+
+    <div class="four-r">
+
+      <div class="four-r-icon">
+        👥
+      </div>
+
+      <strong>
+        REACH
+      </strong>
+
+      <span>
+        Apakah intervensi menjangkau sasaran?
+      </span>
+
     </div>
 
 
-    <h2 class="source-name">
-      4R Outcome Pencegahan Wilayah
-    </h2>
+    <div class="four-r">
 
-
-    <div class="four-r-grid">
-
-      <div class="four-r">
-
-        <div class="four-r-icon">
-          👥
-        </div>
-
-        <strong>
-          REACH
-        </strong>
-
-        <span>
-          Jangkauan intervensi dan sasaran.
-        </span>
-
+      <div class="four-r-icon">
+        ↗
       </div>
 
+      <strong>
+        RESPONSE
+      </strong>
 
-      <div class="four-r">
+      <span>
+        Apakah risiko mendapat respons?
+      </span>
 
-        <div class="four-r-icon">
-          ↗
-        </div>
+    </div>
 
-        <strong>
-          RESPONSE
-        </strong>
 
-        <span>
-          Risiko terdeteksi, rujukan, dan akses bantuan.
-        </span>
+    <div class="four-r">
 
+      <div class="four-r-icon">
+        🛡️
       </div>
 
+      <strong>
+        RESILIENCE
+      </strong>
 
-      <div class="four-r">
+      <span>
+        Apakah faktor protektif diperkuat?
+      </span>
 
-        <div class="four-r-icon">
-          🛡️
-        </div>
+    </div>
 
-        <strong>
-          RESILIENCE
-        </strong>
 
-        <span>
-          Faktor protektif yang diperkuat.
-        </span>
+    <div class="four-r">
 
+      <div class="four-r-icon">
+        📉
       </div>
 
+      <strong>
+        RISK TREND
+      </strong>
 
-      <div class="four-r">
-
-        <div class="four-r-icon">
-          📉
-        </div>
-
-        <strong>
-          RISK TREND
-        </strong>
-
-        <span>
-          Monitoring tren indikator TKP wilayah.
-        </span>
-
-      </div>
+      <span>
+        Bagaimana tren indikator wilayah?
+      </span>
 
     </div>
 
   </div>
+
+</div>
 
 
 </div>
@@ -1546,18 +1640,14 @@ main {
 </section>
 
 
-<!-- ======================================================
-     MAP
-====================================================== -->
+<!-- PETA -->
 
 <section
   id="page-peta"
   class="page"
 >
 
-
 <div class="map-toolbar">
-
 
   <div class="filters">
 
@@ -1616,39 +1706,31 @@ main {
 
 <div id="map"></div>
 
-
 </section>
 
 
-<!-- ======================================================
-     INTERVENSI
-====================================================== -->
+<!-- INTERVENSI -->
 
 <section
   id="page-intervensi"
   class="page"
 >
 
-
 <div class="content-wrap">
 
 
 <div class="card">
 
-
 <h3 class="section-title">
-  Input Intervensi Pencegahan
+Input Intervensi Pencegahan
 </h3>
 
 
 <p class="section-desc">
 
-Intervensi dicatat berdasarkan
-klaster prioritas pencegahan.
-
-Data digunakan untuk membangun
-indikator Reach, Response,
-Resilience, dan Risk Trend.
+Data yang dicatat akan dibaca dalam model 4R.
+Isi berdasarkan data atau bukti kegiatan,
+bukan perkiraan.
 
 </p>
 
@@ -1724,9 +1806,7 @@ Dasar Intervensi *
 Pilih
 </option>
 
-<option>
-Peta TKP
-</option>
+<option>Peta TKP</option>
 
 <option>
 Konsentrasi Kasus
@@ -1744,9 +1824,7 @@ Laporan Masyarakat
 Arahan Pimpinan
 </option>
 
-<option>
-Lainnya
-</option>
+<option>Lainnya</option>
 
 </select>
 
@@ -1768,9 +1846,7 @@ Jenis Intervensi *
 Pilih
 </option>
 
-<option>
-Edukasi
-</option>
+<option>Edukasi</option>
 
 <option>
 Intervensi Remaja
@@ -1788,17 +1864,13 @@ Penguatan Masyarakat
 Deteksi Dini
 </option>
 
-<option>
-Rujukan
-</option>
+<option>Rujukan</option>
 
 <option>
 Pendampingan
 </option>
 
-<option>
-Kampanye
-</option>
+<option>Kampanye</option>
 
 </select>
 
@@ -1820,17 +1892,11 @@ Kelompok Sasaran *
 Pilih
 </option>
 
-<option>
-Remaja
-</option>
+<option>Remaja</option>
 
-<option>
-Pelajar
-</option>
+<option>Pelajar</option>
 
-<option>
-Keluarga
-</option>
+<option>Keluarga</option>
 
 <option>
 Masyarakat Umum
@@ -1840,9 +1906,7 @@ Masyarakat Umum
 Tokoh Masyarakat
 </option>
 
-<option>
-Pekerja
-</option>
+<option>Pekerja</option>
 
 <option>
 Kelompok Berisiko
@@ -1862,7 +1926,17 @@ Penggerak Lokal
 <div class="field">
 
 <label>
+
 Jumlah Sasaran
+
+<button
+  type="button"
+  class="info-btn"
+  onclick="showHelp('sasaran')"
+>
+i
+</button>
+
 </label>
 
 <input
@@ -1880,7 +1954,17 @@ Jumlah Sasaran
 <div class="field">
 
 <label>
+
 Jumlah Risiko Terdeteksi
+
+<button
+  type="button"
+  class="info-btn"
+  onclick="showHelp('risiko')"
+>
+i
+</button>
+
 </label>
 
 <input
@@ -1896,7 +1980,17 @@ Jumlah Risiko Terdeteksi
 <div class="field">
 
 <label>
+
 Jumlah Rujukan
+
+<button
+  type="button"
+  class="info-btn"
+  onclick="showHelp('rujukan')"
+>
+i
+</button>
+
 </label>
 
 <input
@@ -1912,7 +2006,17 @@ Jumlah Rujukan
 <div class="field">
 
 <label>
+
 Jumlah Akses Rehab/Bantuan
+
+<button
+  type="button"
+  class="info-btn"
+  onclick="showHelp('akses')"
+>
+i
+</button>
+
 </label>
 
 <input
@@ -1930,8 +2034,19 @@ Jumlah Akses Rehab/Bantuan
 <div class="field">
 
 <label>
+
 Faktor Protektif yang Diperkuat
+
+<button
+  type="button"
+  class="info-btn"
+  onclick="showHelp('protektif')"
+>
+i
+</button>
+
 </label>
+
 
 <select id="faktorProtektif">
 
@@ -1979,8 +2094,19 @@ Akses Bantuan
 <div class="field">
 
 <label>
+
 Bukti Penguatan
+
+<button
+  type="button"
+  class="info-btn"
+  onclick="showHelp('bukti')"
+>
+i
+</button>
+
 </label>
+
 
 <select id="buktiPenguatan">
 
@@ -2093,7 +2219,6 @@ SIMPAN INTERVENSI
 
 </form>
 
-
 </div>
 
 
@@ -2103,10 +2228,6 @@ SIMPAN INTERVENSI
 Riwayat Intervensi
 </h3>
 
-<p class="section-desc">
-Data intervensi pencegahan yang telah dicatat.
-</p>
-
 <div id="intervention-list"></div>
 
 </div>
@@ -2114,19 +2235,15 @@ Data intervensi pencegahan yang telah dicatat.
 
 </div>
 
-
 </section>
 
 
-<!-- ======================================================
-     OUTCOME
-====================================================== -->
+<!-- OUTCOME -->
 
 <section
   id="page-outcome"
   class="page"
 >
-
 
 <div class="content-wrap">
 
@@ -2141,38 +2258,47 @@ MODEL 4R
 Outcome Pencegahan Wilayah
 </h2>
 
+
 <p class="section-desc">
 
-Monitoring menghubungkan jangkauan intervensi,
-respons terhadap risiko, penguatan faktor protektif,
-dan tren indikator TKP wilayah.
-
-Risk Trend merupakan indikator monitoring wilayah
-dan tidak secara otomatis menunjukkan hubungan
-sebab-akibat tunggal.
+Sistem membaca perkembangan intervensi
+berdasarkan Reach, Response, Resilience,
+dan Risk Trend.
 
 </p>
 
-<div id="outcome-list"></div>
+
+<div class="method-note">
+
+<strong>Catatan metodologis:</strong>
+
+Risk Trend merupakan indikator monitoring
+wilayah. Perubahan jumlah TKP tidak otomatis
+diartikan sebagai akibat langsung satu kegiatan
+pencegahan.
 
 </div>
 
 
+<div
+  id="outcome-list"
+  style="margin-top:15px"
+></div>
+
+
 </div>
 
+</div>
 
 </section>
 
 
-<!-- ======================================================
-     TENTANG
-====================================================== -->
+<!-- PANDUAN -->
 
 <section
-  id="page-tentang"
+  id="page-panduan"
   class="page"
 >
-
 
 <div class="content-wrap">
 
@@ -2180,50 +2306,249 @@ sebab-akibat tunggal.
 <div class="card">
 
 <div class="eyebrow">
-TENTANG SISTEM
+PANDUAN
 </div>
 
 
 <h2 class="source-name">
-Pencegahan Berbasis Wilayah Prioritas
+Cara Membaca Outcome 4R
 </h2>
 
 
-<p class="source-desc">
+<p class="section-desc">
 
-Data pemetaan TKP SiPerawan Kalbar digunakan
-sebagai sumber data awal analisis spasial.
-
-<br><br>
-
-Lokasi kejadian dianalisis berdasarkan kedekatan
-spasial untuk membentuk klaster dan indikator
-prioritas pencegahan.
-
-<br><br>
-
-Intervensi selanjutnya dimonitor melalui model
-4R Outcome Pencegahan Wilayah:
-
-<strong>
-Reach, Response, Resilience, dan Risk Trend.
-</strong>
-
-<br><br>
-
-Status prioritas dalam sistem ini merupakan
-indikator analisis untuk mendukung perencanaan
-pencegahan dan tidak otomatis merupakan
-penetapan resmi kawasan rawan narkoba.
+4R merupakan kerangka monitoring dalam aplikasi
+untuk menghubungkan intervensi pencegahan dengan
+perkembangan indikator wilayah.
 
 </p>
 
 
+<div class="guide-card">
+
+<div class="guide-title">
+👥 REACH
+</div>
+
+<div class="guide-question">
+
+Apakah intervensi benar-benar masuk
+ke klaster prioritas dan menjangkau sasaran?
+
+</div>
+
+<div class="guide-text">
+
+Reach belum menunjukkan perubahan perilaku.
+Reach menunjukkan bahwa pencegahan telah
+menjangkau wilayah dan kelompok sasaran.
+
+</div>
+
+<ul class="guide-list">
+
+<li>
+Jumlah intervensi.
+</li>
+
+<li>
+Jumlah sasaran terjangkau.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="guide-card">
+
+<div class="guide-title">
+↗ RESPONSE
+</div>
+
+<div class="guide-question">
+
+Apakah risiko yang ditemukan memperoleh
+respons dan akses bantuan?
+
+</div>
+
+<div class="guide-text">
+
+Risiko terdeteksi harus berasal dari mekanisme
+identifikasi, skrining, asesmen, atau temuan
+terstruktur. Bukan perkiraan petugas.
+
+</div>
+
+<ul class="guide-list">
+
+<li>
+Risiko terdeteksi.
+</li>
+
+<li>
+Dirujuk.
+</li>
+
+<li>
+Mengakses rehabilitasi atau bantuan.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="guide-card">
+
+<div class="guide-title">
+🛡️ RESILIENCE
+</div>
+
+<div class="guide-question">
+
+Faktor protektif apa yang diperkuat
+dan apakah terdapat bukti keberlanjutannya?
+
+</div>
+
+<div class="guide-text">
+
+Tidak cukup menyatakan peserta telah diedukasi.
+Sistem membaca faktor protektif yang menjadi
+sasaran serta bukti penguatan yang tercatat.
+
+</div>
+
+<ul class="guide-list">
+
+<li>
+Dukungan keluarga.
+</li>
+
+<li>
+Keterikatan sekolah.
+</li>
+
+<li>
+Keterampilan menolak.
+</li>
+
+<li>
+Aktivitas positif.
+</li>
+
+<li>
+Keterlibatan masyarakat.
+</li>
+
+<li>
+Akses bantuan.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="guide-card">
+
+<div class="guide-title">
+📉 RISK TREND
+</div>
+
+<div class="guide-question">
+
+Bagaimana perkembangan indikator TKP
+pada klaster setelah intervensi dimulai?
+
+</div>
+
+<div class="guide-text">
+
+Sistem membandingkan jumlah TKP dalam
+12 bulan sebelum intervensi pertama dengan
+12 bulan setelah intervensi pertama.
+
+</div>
+
+<ul class="guide-list">
+
+<li>
+Turun ≥ 10%: Tren Menurun.
+</li>
+
+<li>
+Perubahan antara -10% dan +10%: Stabil.
+</li>
+
+<li>
+Naik ≥ 10%: Tren Meningkat.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="guide-card">
+
+<div class="guide-title">
+STATUS PERKEMBANGAN OUTCOME
+</div>
+
+
+<div class="guide-text">
+
+Status tidak disebut skor keberhasilan.
+Status menunjukkan tahap perkembangan
+indikator yang tercatat.
+
+</div>
+
+
+<ul class="guide-list">
+
+<li>
+⚪ Belum Terintervensi.
+</li>
+
+<li>
+🔵 Intervensi Dimulai.
+</li>
+
+<li>
+🟡 Respons Berkembang.
+</li>
+
+<li>
+🟢 Penguatan Berjalan.
+</li>
+
+<li>
+✅ Outcome Terindikasi Positif.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="method-note">
+
+<strong>Penting:</strong>
+
+Model 4R Outcome Pencegahan Wilayah merupakan
+kerangka kerja monitoring aplikasi. 4R bukan nama
+standar resmi UNODC, WHO, CDC, atau lembaga lain.
+
 </div>
 
 
 </div>
 
+</div>
 
 </section>
 
@@ -2231,9 +2556,7 @@ penetapan resmi kawasan rawan narkoba.
 </main>
 
 
-<!-- ======================================================
-     DETAIL PANEL
-====================================================== -->
+<!-- DETAIL -->
 
 <div
   id="detail-backdrop"
@@ -2254,9 +2577,7 @@ penetapan resmi kawasan rawan narkoba.
 </div>
 
 
-<!-- ======================================================
-     BOTTOM NAV
-====================================================== -->
+<!-- NAV -->
 
 <nav class="bottom-nav">
 
@@ -2315,13 +2636,13 @@ Outcome
 
 <button
   class="nav-btn"
-  data-page="tentang"
-  onclick="openPage('tentang', this)"
+  data-page="panduan"
+  onclick="openPage('panduan', this)"
 >
 
-<span>ⓘ</span>
+<span>?</span>
 
-Tentang
+Panduan
 
 </button>
 
@@ -2342,17 +2663,14 @@ Tentang
 
 <script>
 
-/* =========================================================
-   API
-========================================================= */
+
+/* API */
 
 const API_URL =
   'https://script.google.com/macros/s/AKfycbwvas8FIP_de6oWKF80MIA4ESVYKRLN4SQkTB6uo-B5wbbOUl7wpTVK_5pHOhbJ5gAh/exec';
 
 
-/* =========================================================
-   STATE
-========================================================= */
+/* STATE */
 
 let summary = null;
 
@@ -2383,20 +2701,18 @@ let showCluster = true;
 let showIntervensi = true;
 
 
-/* =========================================================
-   INIT
-========================================================= */
+/* INIT */
 
 document.addEventListener(
   'DOMContentLoaded',
   async function() {
 
-    document
-      .getElementById('tanggal')
-      .value =
-        new Date()
-          .toISOString()
-          .split('T')[0];
+    valueSet(
+      'tanggal',
+      new Date()
+        .toISOString()
+        .split('T')[0]
+    );
 
 
     document
@@ -2429,28 +2745,24 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   API GET
-========================================================= */
+/* API GET */
 
 async function apiGet(action) {
 
-  const url =
-    API_URL +
-    '?action=' +
-    encodeURIComponent(action) +
-    '&t=' +
-    Date.now();
-
-
   const response =
     await fetch(
-      url,
+
+      API_URL +
+      '?action=' +
+      encodeURIComponent(action) +
+      '&t=' +
+      Date.now(),
+
       {
-        method: 'GET',
-        cache: 'no-store',
-        redirect: 'follow'
+        cache:'no-store',
+        redirect:'follow'
       }
+
     );
 
 
@@ -2472,7 +2784,7 @@ async function apiGet(action) {
 
     throw new Error(
       data.message ||
-      'API gagal.'
+      'API gagal'
     );
 
   }
@@ -2483,9 +2795,7 @@ async function apiGet(action) {
 }
 
 
-/* =========================================================
-   LOAD ALL
-========================================================= */
+/* LOAD */
 
 async function loadAll() {
 
@@ -2508,25 +2818,18 @@ async function loadAll() {
       ]);
 
 
-    summary =
-      result[0];
+    summary = result[0];
 
-
-    tkpResponse =
-      result[1];
-
+    tkpResponse = result[1];
 
     tkpData =
       tkpResponse.data || [];
 
-
     clusterData =
       summary.hotspotUtama || [];
 
-
     interventionData =
       result[2].data || [];
-
 
     outcomeData =
       result[3].data || [];
@@ -2574,105 +2877,91 @@ async function loadAll() {
 }
 
 
-/* =========================================================
-   DASHBOARD
-========================================================= */
+/* DASHBOARD */
 
 function renderDashboard() {
 
-  document
-    .getElementById('source-name')
-    .textContent =
-
-      summary.sumberData ||
-      'SiPerawan Kalbar';
-
-
-  document
-    .getElementById('source-desc')
-    .textContent =
-
-      summary.deskripsiSumber ||
-      'Basis data pemetaan TKP';
+  text(
+    'source-name',
+    summary.sumberData ||
+    'SiPerawan Kalbar'
+  );
 
 
-  document
-    .getElementById('periode-awal')
-    .textContent =
-
-      formatDate(
-        summary.periodeAwal
-      );
+  text(
+    'source-desc',
+    summary.deskripsiSumber ||
+    'Basis data pemetaan TKP'
+  );
 
 
-  document
-    .getElementById('periode-akhir')
-    .textContent =
-
-      formatDate(
-        summary.periodeAkhir
-      );
-
-
-  document
-    .getElementById('flow-tkp')
-    .textContent =
-
-      formatNumber(
-        summary.totalTKP
-      );
+  text(
+    'periode-awal',
+    formatDate(
+      summary.periodeAwal
+    )
+  );
 
 
-  document
-    .getElementById('flow-klaster')
-    .textContent =
-
-      formatNumber(
-        summary.totalHotspot
-      );
-
-
-  document
-    .getElementById('stat-tkp')
-    .textContent =
-
-      formatNumber(
-        summary.totalTKP
-      );
+  text(
+    'periode-akhir',
+    formatDate(
+      summary.periodeAkhir
+    )
+  );
 
 
-  document
-    .getElementById('stat-klaster')
-    .textContent =
-
-      formatNumber(
-        summary.totalHotspot
-      );
-
-
-  document
-    .getElementById('stat-tinggi')
-    .textContent =
-
-      formatNumber(
-        summary.prioritasTinggi
-      );
+  text(
+    'flow-tkp',
+    formatNumber(
+      summary.totalTKP
+    )
+  );
 
 
-  document
-    .getElementById('stat-sedang')
-    .textContent =
+  text(
+    'flow-klaster',
+    formatNumber(
+      summary.totalHotspot
+    )
+  );
 
-      formatNumber(
-        summary.prioritasSedang
-      );
+
+  text(
+    'stat-tkp',
+    formatNumber(
+      summary.totalTKP
+    )
+  );
+
+
+  text(
+    'stat-klaster',
+    formatNumber(
+      summary.totalHotspot
+    )
+  );
+
+
+  text(
+    'stat-tinggi',
+    formatNumber(
+      summary.prioritasTinggi
+    )
+  );
+
+
+  text(
+    'stat-sedang',
+    formatNumber(
+      summary.prioritasSedang
+    )
+  );
 
 }
 
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* PAGE */
 
 function openPage(page, button) {
 
@@ -2681,13 +2970,15 @@ function openPage(page, button) {
 
   document
     .querySelectorAll('.page')
-    .forEach(function(el) {
+    .forEach(
+      function(el) {
 
-      el.classList.remove(
-        'active'
-      );
+        el.classList.remove(
+          'active'
+        );
 
-    });
+      }
+    );
 
 
   document
@@ -2701,13 +2992,15 @@ function openPage(page, button) {
 
   document
     .querySelectorAll('.nav-btn')
-    .forEach(function(el) {
+    .forEach(
+      function(el) {
 
-      el.classList.remove(
-        'active'
-      );
+        el.classList.remove(
+          'active'
+        );
 
-    });
+      }
+    );
 
 
   if (button) {
@@ -2738,16 +3031,14 @@ function openPage(page, button) {
 
 
   window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
+    top:0,
+    behavior:'smooth'
   });
 
 }
 
 
-/* =========================================================
-   MAP INIT
-========================================================= */
+/* MAP */
 
 function initMap() {
 
@@ -2761,7 +3052,7 @@ function initMap() {
   map =
     L.map('map')
       .setView(
-        [-0.5, 110],
+        [-0.5,110],
         7
       );
 
@@ -2772,7 +3063,7 @@ function initMap() {
 
     {
 
-      maxZoom: 19,
+      maxZoom:19,
 
       attribution:
         '&copy; OpenStreetMap contributors'
@@ -2783,25 +3074,18 @@ function initMap() {
 
 
   layerTKP =
-    L.layerGroup()
-      .addTo(map);
+    L.layerGroup().addTo(map);
 
 
   layerCluster =
-    L.layerGroup()
-      .addTo(map);
+    L.layerGroup().addTo(map);
 
 
   layerIntervensi =
-    L.layerGroup()
-      .addTo(map);
+    L.layerGroup().addTo(map);
 
 }
 
-
-/* =========================================================
-   RENDER MAP
-========================================================= */
 
 function renderMap() {
 
@@ -2820,25 +3104,20 @@ function renderMap() {
 
 
   const tahun =
-    document
-      .getElementById('filter-tahun')
-      .value;
+    value('filter-tahun');
 
 
   const wilayah =
-    document
-      .getElementById('filter-wilayah')
-      .value;
+    value('filter-wilayah');
 
 
-  const tkpFiltered =
+  const filtered =
     tkpData.filter(
       function(item) {
 
         if (
           tahun &&
-          String(item.tahun) !==
-          tahun
+          String(item.tahun) !== tahun
         ) {
 
           return false;
@@ -2848,9 +3127,7 @@ function renderMap() {
 
         if (
           wilayah &&
-          String(
-            item.wilayahHukum
-          ) !== wilayah
+          String(item.wilayahHukum) !== wilayah
         ) {
 
           return false;
@@ -2871,12 +3148,11 @@ function renderMap() {
 
   if (showTKP) {
 
-    tkpFiltered.forEach(
+    filtered.forEach(
       function(item) {
 
         const lat =
           Number(item.lat);
-
 
         const lng =
           Number(item.lng);
@@ -2895,20 +3171,19 @@ function renderMap() {
         const marker =
           L.circleMarker(
 
-            [lat, lng],
+            [lat,lng],
 
             {
 
-              radius: 5,
+              radius:5,
 
-              color: '#2577b9',
+              color:'#2577b9',
 
-              fillColor:
-                '#2577b9',
+              fillColor:'#2577b9',
 
-              fillOpacity: .82,
+              fillOpacity:.82,
 
-              weight: 1
+              weight:1
 
             }
 
@@ -2916,27 +3191,20 @@ function renderMap() {
 
 
         marker.on(
-
           'click',
-
           function() {
 
-            showTKPDetail(
-              item
-            );
+            showTKPDetail(item);
 
           }
-
         );
 
 
-        marker.addTo(
-          layerTKP
-        );
+        marker.addTo(layerTKP);
 
 
         bounds.push(
-          [lat, lng]
+          [lat,lng]
         );
 
       }
@@ -2954,7 +3222,6 @@ function renderMap() {
 
         const lat =
           Number(item.lat);
-
 
         const lng =
           Number(item.lng);
@@ -2979,7 +3246,7 @@ function renderMap() {
         const marker =
           L.circleMarker(
 
-            [lat, lng],
+            [lat,lng],
 
             {
 
@@ -2995,13 +3262,13 @@ function renderMap() {
 
                 ),
 
-              color: color,
+              color:color,
 
-              fillColor: color,
+              fillColor:color,
 
-              fillOpacity: .55,
+              fillOpacity:.55,
 
-              weight: 3
+              weight:3
 
             }
 
@@ -3009,17 +3276,12 @@ function renderMap() {
 
 
         marker.on(
-
           'click',
-
           function() {
 
-            showClusterDetail(
-              item
-            );
+            showClusterDetail(item);
 
           }
-
         );
 
 
@@ -3029,7 +3291,7 @@ function renderMap() {
 
 
         bounds.push(
-          [lat, lng]
+          [lat,lng]
         );
 
       }
@@ -3048,7 +3310,6 @@ function renderMap() {
         const lat =
           Number(item.latArea);
 
-
         const lng =
           Number(item.lngArea);
 
@@ -3066,20 +3327,19 @@ function renderMap() {
         const marker =
           L.circleMarker(
 
-            [lat, lng],
+            [lat,lng],
 
             {
 
-              radius: 9,
+              radius:9,
 
-              color: '#148858',
+              color:'#148858',
 
-              fillColor:
-                '#22ad72',
+              fillColor:'#22ad72',
 
-              fillOpacity: .92,
+              fillOpacity:.92,
 
-              weight: 3
+              weight:3
 
             }
 
@@ -3087,9 +3347,7 @@ function renderMap() {
 
 
         marker.on(
-
           'click',
-
           function() {
 
             showInterventionDetail(
@@ -3097,7 +3355,6 @@ function renderMap() {
             );
 
           }
-
         );
 
 
@@ -3107,7 +3364,7 @@ function renderMap() {
 
 
         bounds.push(
-          [lat, lng]
+          [lat,lng]
         );
 
       }
@@ -3124,10 +3381,9 @@ function renderMap() {
 
       {
 
-        padding:
-          [20, 20],
+        padding:[20,20],
 
-        maxZoom: 12
+        maxZoom:12
 
       }
 
@@ -3138,9 +3394,7 @@ function renderMap() {
 }
 
 
-/* =========================================================
-   TKP DETAIL
-========================================================= */
+/* TKP DETAIL */
 
 function showTKPDetail(item) {
 
@@ -3255,72 +3509,23 @@ function showTKPDetail(item) {
     </div>
 
 
-    <div
-      class="detail-box"
-      style="margin-top:10px"
-    >
-
-      <span>
-        TKP
-      </span>
-
-      <strong>
-
-        ${escapeHtml(
-          item.tkp ||
-          '-'
-        )}
-
-      </strong>
-
-    </div>
+    ${detailFull(
+      'TKP',
+      item.tkp
+    )}
 
 
-    <div
-      class="detail-box"
-      style="margin-top:10px"
-    >
-
-      <span>
-        Lokasi TKP
-      </span>
-
-      <strong>
-
-        ${escapeHtml(
-          item.lokasi ||
-          '-'
-        )}
-
-      </strong>
-
-    </div>
+    ${detailFull(
+      'Lokasi TKP',
+      item.lokasi
+    )}
 
 
-    <div
-      class="detail-box"
-      style="margin-top:10px"
-    >
-
-      <span>
-        Uraian Kasus
-      </span>
-
-      <strong
-        style="
-          font-weight:500;
-          line-height:1.6
-        "
-      >
-
-        ${escapeHtml(
-          item.uraianKasus ||
-          '-'
-        )}
-
-      </strong>
-
-    </div>
+    ${detailFull(
+      'Uraian Kasus',
+      item.uraianKasus,
+      true
+    )}
 
 
     <div
@@ -3338,9 +3543,7 @@ function showTKPDetail(item) {
 }
 
 
-/* =========================================================
-   CLUSTER DETAIL
-========================================================= */
+/* CLUSTER DETAIL */
 
 function showClusterDetail(item) {
 
@@ -3369,8 +3572,7 @@ function showClusterDetail(item) {
     <div class="sheet-sub">
 
       Hasil analisis konsentrasi
-      spasial data TKP SiPerawan
-      Kalbar.
+      spasial data TKP SiPerawan Kalbar.
 
     </div>
 
@@ -3378,80 +3580,37 @@ function showClusterDetail(item) {
     <div class="detail-grid">
 
 
-      <div class="detail-box">
-
-        <span>
-          TKP Terpetakan
-        </span>
-
-        <strong>
-
-          ${formatNumber(
-            item.jumlahTKP
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'TKP Terpetakan',
+        formatNumber(
+          item.jumlahTKP
+        )
+      )}
 
 
-      <div class="detail-box">
-
-        <span>
-          Wilayah Hukum
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            item.wilayahHukum
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'Wilayah Hukum',
+        item.wilayahHukum
+      )}
 
 
-      <div class="detail-box">
-
-        <span>
-          ID Klaster
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            item.id
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'ID Klaster',
+        item.id
+      )}
 
 
-      <div class="detail-box">
-
-        <span>
-          Jenis Dominan
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            item.jenisDominan ||
-            '-'
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'Jenis Dominan',
+        item.jenisDominan ||
+        '-'
+      )}
 
 
     </div>
 
 
     <button
-
       class="action-button"
 
       onclick="
@@ -3459,7 +3618,6 @@ function showClusterDetail(item) {
           '${escapeJS(item.id)}'
         )
       "
-
     >
 
       CATAT INTERVENSI PENCEGAHAN
@@ -3471,18 +3629,14 @@ function showClusterDetail(item) {
 }
 
 
-/* =========================================================
-   INTERVENTION DETAIL
-========================================================= */
+/* INTERVENTION DETAIL */
 
 function showInterventionDetail(item) {
 
   showDetail(`
 
     <div class="sheet-label">
-
       INTERVENSI PENCEGAHAN
-
     </div>
 
 
@@ -3515,161 +3669,71 @@ function showInterventionDetail(item) {
     <div class="detail-grid">
 
 
-      <div class="detail-box">
-
-        <span>
-          Sasaran
-        </span>
-
-        <strong>
-
-          ${formatNumber(
-            item.jumlahSasaran
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'Sasaran',
+        formatNumber(
+          item.jumlahSasaran
+        )
+      )}
 
 
-      <div class="detail-box">
-
-        <span>
-          Kelompok
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            item.kelompokSasaran
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'Kelompok',
+        item.kelompokSasaran
+      )}
 
 
-      <div class="detail-box">
-
-        <span>
-          Risiko Terdeteksi
-        </span>
-
-        <strong>
-
-          ${formatNumber(
-            item.jumlahRisiko
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'Risiko Terdeteksi',
+        formatNumber(
+          item.jumlahRisiko
+        )
+      )}
 
 
-      <div class="detail-box">
-
-        <span>
-          Rujukan
-        </span>
-
-        <strong>
-
-          ${formatNumber(
-            item.jumlahRujukan
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'Rujukan',
+        formatNumber(
+          item.jumlahRujukan
+        )
+      )}
 
 
-      <div class="detail-box">
-
-        <span>
-          Akses Bantuan
-        </span>
-
-        <strong>
-
-          ${formatNumber(
-            item.jumlahAksesBantuan
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'Akses Bantuan',
+        formatNumber(
+          item.jumlahAksesBantuan
+        )
+      )}
 
 
-      <div class="detail-box">
-
-        <span>
-          Faktor Protektif
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            item.faktorProtektif ||
-            '-'
-          )}
-
-        </strong>
-
-      </div>
+      ${detailMini(
+        'Faktor Protektif',
+        item.faktorProtektif ||
+        '-'
+      )}
 
 
     </div>
 
 
-    <div
-      class="detail-box"
-      style="margin-top:10px"
-    >
-
-      <span>
-        Bukti Penguatan
-      </span>
-
-      <strong>
-
-        ${escapeHtml(
-          item.buktiPenguatan ||
-          '-'
-        )}
-
-      </strong>
-
-    </div>
+    ${detailFull(
+      'Bukti Penguatan',
+      item.buktiPenguatan
+    )}
 
 
-    <div
-      class="detail-box"
-      style="margin-top:10px"
-    >
-
-      <span>
-        Tindak Lanjut
-      </span>
-
-      <strong>
-
-        ${escapeHtml(
-          item.tindakLanjut ||
-          '-'
-        )}
-
-      </strong>
-
-    </div>
+    ${detailFull(
+      'Tindak Lanjut',
+      item.tindakLanjut
+    )}
 
   `);
 
 }
 
 
-/* =========================================================
-   DETAIL PANEL
-========================================================= */
+/* DETAIL PANEL */
 
 function showDetail(html) {
 
@@ -3722,9 +3786,121 @@ function closeDetail() {
 }
 
 
-/* =========================================================
-   LAYER TOGGLE
-========================================================= */
+/* INFO HELP */
+
+function showHelp(type) {
+
+  const help = {
+
+    sasaran: {
+
+      title:
+        'Jumlah Sasaran',
+
+      text:
+        'Jumlah peserta atau individu yang benar-benar terjangkau dalam intervensi. Gunakan data daftar hadir, laporan kegiatan, atau catatan kegiatan.'
+
+    },
+
+
+    risiko: {
+
+      title:
+        'Risiko Terdeteksi',
+
+      text:
+        'Jumlah individu atau kelompok sasaran yang berdasarkan deteksi, skrining, asesmen, atau mekanisme identifikasi terstruktur menunjukkan risiko yang memerlukan respons. Jangan diisi berdasarkan perkiraan.'
+
+    },
+
+
+    rujukan: {
+
+      title:
+        'Jumlah Rujukan',
+
+      text:
+        'Jumlah risiko terdeteksi yang secara nyata diarahkan atau dihubungkan ke layanan, petugas, asesmen, rehabilitasi, konseling, atau mekanisme bantuan lain.'
+
+    },
+
+
+    akses: {
+
+      title:
+        'Akses Rehab/Bantuan',
+
+      text:
+        'Jumlah individu yang setelah dirujuk tercatat benar-benar mengakses layanan rehabilitasi atau bentuk bantuan yang sesuai.'
+
+    },
+
+
+    protektif: {
+
+      title:
+        'Faktor Protektif',
+
+      text:
+        'Faktor individu atau lingkungan yang secara sengaja menjadi sasaran penguatan dalam intervensi, misalnya dukungan keluarga, keterikatan sekolah, keterampilan menolak, aktivitas positif, atau akses bantuan.'
+
+    },
+
+
+    bukti: {
+
+      title:
+        'Bukti Penguatan',
+
+      text:
+        'Bukti tindak lanjut atau keberlanjutan setelah intervensi. Contohnya komunitas terbentuk, kegiatan berlanjut, pendamping aktif, program keluarga berjalan, atau adanya komitmen sekolah/instansi.'
+
+    }
+
+  };
+
+
+  const item =
+    help[type];
+
+
+  if (!item) {
+
+    return;
+
+  }
+
+
+  showDetail(`
+
+    <div class="sheet-label">
+      PANDUAN PENGISIAN
+    </div>
+
+
+    <h2 class="sheet-title">
+
+      ${escapeHtml(
+        item.title
+      )}
+
+    </h2>
+
+
+    <div class="sheet-sub">
+
+      ${escapeHtml(
+        item.text
+      )}
+
+    </div>
+
+  `);
+
+}
+
+
+/* LAYER */
 
 function toggleLayer(type) {
 
@@ -3787,24 +3963,20 @@ function toggleLayer(type) {
 }
 
 
-/* =========================================================
-   FILTER
-========================================================= */
+/* FILTER */
 
 function fillFilter() {
 
   const tahunSelect =
-    document
-      .getElementById(
-        'filter-tahun'
-      );
+    document.getElementById(
+      'filter-tahun'
+    );
 
 
   const wilayahSelect =
-    document
-      .getElementById(
-        'filter-wilayah'
-      );
+    document.getElementById(
+      'filter-wilayah'
+    );
 
 
   const oldTahun =
@@ -3840,22 +4012,10 @@ function fillFilter() {
   .forEach(
     function(item) {
 
-      const option =
-        document.createElement(
-          'option'
-        );
-
-
-      option.value =
-        item;
-
-
-      option.textContent =
-        item;
-
-
-      tahunSelect.appendChild(
-        option
+      addOption(
+        tahunSelect,
+        item,
+        item
       );
 
     }
@@ -3869,22 +4029,10 @@ function fillFilter() {
   .forEach(
     function(item) {
 
-      const option =
-        document.createElement(
-          'option'
-        );
-
-
-      option.value =
-        item;
-
-
-      option.textContent =
-        item;
-
-
-      wilayahSelect.appendChild(
-        option
+      addOption(
+        wilayahSelect,
+        item,
+        item
       );
 
     }
@@ -3901,17 +4049,14 @@ function fillFilter() {
 }
 
 
-/* =========================================================
-   CLUSTER SELECT
-========================================================= */
+/* CLUSTER SELECT */
 
 function fillClusterSelect() {
 
   const select =
-    document
-      .getElementById(
-        'hotspotId'
-      );
+    document.getElementById(
+      'hotspotId'
+    );
 
 
   const oldValue =
@@ -3930,33 +4075,19 @@ function fillClusterSelect() {
   clusterData.forEach(
     function(item) {
 
-      const option =
-        document.createElement(
-          'option'
-        );
+      addOption(
 
+        select,
 
-      option.value =
-        item.id;
-
-
-      option.textContent =
+        item.id,
 
         item.id +
-
         ' · ' +
-
         item.wilayahHukum +
-
         ' · ' +
-
         item.jumlahTKP +
+        ' TKP'
 
-        ' TKP';
-
-
-      select.appendChild(
-        option
       );
 
     }
@@ -3991,14 +4122,16 @@ function selectCluster() {
 
   if (!cluster) {
 
-    document
-      .getElementById('latArea')
-      .value = '';
+    valueSet(
+      'latArea',
+      ''
+    );
 
 
-    document
-      .getElementById('lngArea')
-      .value = '';
+    valueSet(
+      'lngArea',
+      ''
+    );
 
 
     return;
@@ -4006,28 +4139,28 @@ function selectCluster() {
   }
 
 
-  document
-    .getElementById('latArea')
-    .value =
-      cluster.lat;
+  valueSet(
+    'latArea',
+    cluster.lat
+  );
 
 
-  document
-    .getElementById('lngArea')
-    .value =
-      cluster.lng;
+  valueSet(
+    'lngArea',
+    cluster.lng
+  );
 
 
-  document
-    .getElementById('wilayahSasaran')
-    .value =
-      cluster.wilayahHukum;
+  valueSet(
+    'wilayahSasaran',
+    cluster.wilayahHukum
+  );
 
 
-  document
-    .getElementById('dasarIntervensi')
-    .value =
-      'Hasil Analisis Spasial';
+  valueSet(
+    'dasarIntervensi',
+    'Hasil Analisis Spasial'
+  );
 
 }
 
@@ -4049,10 +4182,10 @@ function chooseCluster(id) {
   );
 
 
-  document
-    .getElementById('hotspotId')
-    .value =
-      id;
+  valueSet(
+    'hotspotId',
+    id
+  );
 
 
   selectCluster();
@@ -4060,9 +4193,7 @@ function chooseCluster(id) {
 }
 
 
-/* =========================================================
-   SAVE INTERVENTION
-========================================================= */
+/* SAVE */
 
 async function saveIntervention(e) {
 
@@ -4070,10 +4201,9 @@ async function saveIntervention(e) {
 
 
   const saveButton =
-    document
-      .getElementById(
-        'save-button'
-      );
+    document.getElementById(
+      'save-button'
+    );
 
 
   saveButton.disabled =
@@ -4152,9 +4282,9 @@ async function saveIntervention(e) {
 
         {
 
-          method: 'POST',
+          method:'POST',
 
-          redirect: 'follow',
+          redirect:'follow',
 
           body:
             JSON.stringify({
@@ -4162,7 +4292,7 @@ async function saveIntervention(e) {
               action:
                 'simpan_intervensi',
 
-              data: data
+              data:data
 
             })
 
@@ -4179,16 +4309,14 @@ async function saveIntervention(e) {
 
       throw new Error(
         result.message ||
-        'Gagal menyimpan.'
+        'Gagal menyimpan'
       );
 
     }
 
 
     showToast(
-
       'Intervensi berhasil disimpan.'
-
     );
 
 
@@ -4239,48 +4367,51 @@ function resetForm() {
     .reset();
 
 
-  document
-    .getElementById('tanggal')
-    .value =
+  valueSet(
 
-      new Date()
-        .toISOString()
-        .split('T')[0];
+    'tanggal',
 
+    new Date()
+      .toISOString()
+      .split('T')[0]
 
-  document
-    .getElementById('jumlahSasaran')
-    .value = 0;
+  );
 
 
-  document
-    .getElementById('jumlahRisiko')
-    .value = 0;
+  valueSet(
+    'jumlahSasaran',
+    0
+  );
 
 
-  document
-    .getElementById('jumlahRujukan')
-    .value = 0;
+  valueSet(
+    'jumlahRisiko',
+    0
+  );
 
 
-  document
-    .getElementById('jumlahAksesBantuan')
-    .value = 0;
+  valueSet(
+    'jumlahRujukan',
+    0
+  );
+
+
+  valueSet(
+    'jumlahAksesBantuan',
+    0
+  );
 
 }
 
 
-/* =========================================================
-   RENDER INTERVENTION
-========================================================= */
+/* RIWAYAT */
 
 function renderIntervention() {
 
   const container =
-    document
-      .getElementById(
-        'intervention-list'
-      );
+    document.getElementById(
+      'intervention-list'
+    );
 
 
   container.innerHTML = '';
@@ -4348,15 +4479,14 @@ function renderIntervention() {
 
           <br><br>
 
-          Reach:
+          Sasaran:
           ${formatNumber(
             item.jumlahSasaran
           )}
-          sasaran
 
           <br>
 
-          Risiko:
+          Risiko terdeteksi:
           ${formatNumber(
             item.jumlahRisiko
           )}
@@ -4385,7 +4515,9 @@ function renderIntervention() {
 
 
       div.addEventListener(
+
         'click',
+
         function() {
 
           showInterventionDetail(
@@ -4393,6 +4525,7 @@ function renderIntervention() {
           );
 
         }
+
       );
 
 
@@ -4406,17 +4539,14 @@ function renderIntervention() {
 }
 
 
-/* =========================================================
-   RENDER OUTCOME 4R
-========================================================= */
+/* OUTCOME */
 
 function renderOutcome() {
 
   const container =
-    document
-      .getElementById(
-        'outcome-list'
-      );
+    document.getElementById(
+      'outcome-list'
+    );
 
 
   container.innerHTML = '';
@@ -4428,8 +4558,8 @@ function renderOutcome() {
 
       <p class="section-desc">
 
-        Outcome 4R akan muncul
-        setelah intervensi dicatat.
+        Outcome 4R akan muncul setelah
+        intervensi dicatat.
 
       </p>
 
@@ -4444,26 +4574,34 @@ function renderOutcome() {
   outcomeData.forEach(
     function(item) {
 
+      const status =
+        item.statusOutcome || {};
+
+
+      const reach =
+        item.reach || {};
+
+
+      const response =
+        item.response || {};
+
+
+      const resilience =
+        item.resilience || {};
+
+
       const trend =
         item.riskTrend || {};
 
 
       const faktor =
-        item.resilience &&
-        item.resilience.faktorProtektif
-
-          ? item.resilience.faktorProtektif
-
-          : [];
+        resilience.faktorProtektif ||
+        [];
 
 
       const bukti =
-        item.resilience &&
-        item.resilience.buktiPenguatan
-
-          ? item.resilience.buktiPenguatan
-
-          : [];
+        resilience.buktiPenguatan ||
+        [];
 
 
       const div =
@@ -4493,9 +4631,7 @@ function renderOutcome() {
             item.wilayahSasaran
           )}
 
-          ·
-
-          Prioritas
+          · Prioritas
 
           ${escapeHtml(
             item.prioritas ||
@@ -4505,142 +4641,133 @@ function renderOutcome() {
         </div>
 
 
-        <!-- REACH -->
+        <div class="outcome-status">
 
-        <div class="r-block">
+          <div class="outcome-status-label">
 
-          <div class="r-title">
-
-            👥 REACH
+            STATUS PERKEMBANGAN OUTCOME
 
           </div>
 
 
-          <div class="r-values">
+          <div class="outcome-status-title">
 
-            <div class="r-value">
+            ${statusEmoji(
+              status.level
+            )}
 
-              <span>
-                Intervensi
-              </span>
+            ${escapeHtml(
+              status.status ||
+              '-'
+            )}
 
-              <strong>
-
-                ${formatNumber(
-                  item.reach
-                    ? item.reach.jumlahIntervensi
-                    : 0
-                )}
-
-              </strong>
-
-            </div>
+          </div>
 
 
-            <div class="r-value">
+          <div class="outcome-status-text">
 
-              <span>
-                Sasaran Terjangkau
-              </span>
-
-              <strong>
-
-                ${formatNumber(
-                  item.reach
-                    ? item.reach.jumlahSasaran
-                    : 0
-                )}
-
-              </strong>
-
-            </div>
+            ${escapeHtml(
+              status.interpretasi ||
+              ''
+            )}
 
           </div>
 
         </div>
 
 
-        <!-- RESPONSE -->
+        ${renderRBlock(
+
+          '👥 REACH',
+
+          reach.status,
+
+          reach.interpretasi,
+
+          `
+
+            ${rValue(
+              'Intervensi',
+              reach.jumlahIntervensi
+            )}
+
+            ${rValue(
+              'Sasaran Terjangkau',
+              reach.jumlahSasaran
+            )}
+
+          `
+
+        )}
+
+
+        ${renderRBlock(
+
+          '↗ RESPONSE',
+
+          response.status,
+
+          response.interpretasi,
+
+          `
+
+            ${rValue(
+              'Risiko Terdeteksi',
+              response.risikoTerdeteksi
+            )}
+
+            ${rValue(
+              'Rujukan',
+              response.rujukan
+            )}
+
+            ${rValue(
+              'Akses Bantuan',
+              response.aksesBantuan
+            )}
+
+            ${rValue(
+              '% Rujukan',
+              formatPercent(
+                response.persenRujukan
+              )
+            )}
+
+            ${rValue(
+              '% Akses',
+              formatPercent(
+                response.persenAkses
+              )
+            )}
+
+          `
+
+        )}
+
 
         <div class="r-block">
 
           <div class="r-title">
-
-            ↗ RESPONSE
-
-          </div>
-
-
-          <div class="r-values">
-
-            <div class="r-value">
-
-              <span>
-                Risiko Terdeteksi
-              </span>
-
-              <strong>
-
-                ${formatNumber(
-                  item.response
-                    ? item.response.risikoTerdeteksi
-                    : 0
-                )}
-
-              </strong>
-
-            </div>
-
-
-            <div class="r-value">
-
-              <span>
-                Rujukan
-              </span>
-
-              <strong>
-
-                ${formatNumber(
-                  item.response
-                    ? item.response.rujukan
-                    : 0
-                )}
-
-              </strong>
-
-            </div>
-
-
-            <div class="r-value">
-
-              <span>
-                Akses Bantuan
-              </span>
-
-              <strong>
-
-                ${formatNumber(
-                  item.response
-                    ? item.response.aksesBantuan
-                    : 0
-                )}
-
-              </strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- RESILIENCE -->
-
-        <div class="r-block">
-
-          <div class="r-title">
-
             🛡️ RESILIENCE
+          </div>
+
+
+          <span class="r-status">
+
+            ${escapeHtml(
+              resilience.status ||
+              '-'
+            )}
+
+          </span>
+
+
+          <div class="r-interpretasi">
+
+            ${escapeHtml(
+              resilience.interpretasi ||
+              ''
+            )}
 
           </div>
 
@@ -4657,27 +4784,10 @@ function renderOutcome() {
             style="margin-top:7px"
           >
 
-            ${
-              faktor.length
-
-              ? faktor.map(
-                  function(x) {
-
-                    return `
-
-                      <span class="tag">
-
-                        ${escapeHtml(x)}
-
-                      </span>
-
-                    `;
-
-                  }
-                ).join('')
-
-              : '<span class="sheet-sub">Belum dicatat</span>'
-            }
+            ${renderTags(
+              faktor,
+              'Belum dicatat'
+            )}
 
           </div>
 
@@ -4697,40 +4807,39 @@ function renderOutcome() {
             style="margin-top:7px"
           >
 
-            ${
-              bukti.length
-
-              ? bukti.map(
-                  function(x) {
-
-                    return `
-
-                      <span class="tag">
-
-                        ${escapeHtml(x)}
-
-                      </span>
-
-                    `;
-
-                  }
-                ).join('')
-
-              : '<span class="sheet-sub">Belum dicatat</span>'
-            }
+            ${renderTags(
+              bukti,
+              'Belum dicatat'
+            )}
 
           </div>
 
         </div>
 
 
-        <!-- RISK TREND -->
-
         <div class="r-block">
 
           <div class="r-title">
-
             📉 RISK TREND
+          </div>
+
+
+          <span class="r-status">
+
+            ${escapeHtml(
+              trend.status ||
+              'BELUM TERSEDIA'
+            )}
+
+          </span>
+
+
+          <div class="r-interpretasi">
+
+            ${escapeHtml(
+              trend.interpretasi ||
+              ''
+            )}
 
           </div>
 
@@ -4742,39 +4851,15 @@ function renderOutcome() {
 
               <div class="r-values">
 
-                <div class="r-value">
+                ${rValue(
+                  'TKP Sebelum',
+                  trend.sebelum
+                )}
 
-                  <span>
-                    TKP Sebelum
-                  </span>
-
-                  <strong>
-
-                    ${formatNumber(
-                      trend.sebelum
-                    )}
-
-                  </strong>
-
-                </div>
-
-
-                <div class="r-value">
-
-                  <span>
-                    TKP Sesudah
-                  </span>
-
-                  <strong>
-
-                    ${formatNumber(
-                      trend.sesudah
-                    )}
-
-                  </strong>
-
-                </div>
-
+                ${rValue(
+                  'TKP Sesudah',
+                  trend.sesudah
+                )}
 
                 <div class="r-value">
 
@@ -4838,7 +4923,8 @@ function renderOutcome() {
 
               <div class="sheet-sub">
 
-                Data tren wilayah belum tersedia.
+                Periode pembanding belum
+                mencukupi untuk membaca tren.
 
               </div>
 
@@ -4860,15 +4946,264 @@ function renderOutcome() {
 }
 
 
-/* =========================================================
-   HELPERS
-========================================================= */
+/* HTML HELPERS */
+
+function renderRBlock(
+  title,
+  status,
+  interpretasi,
+  values
+) {
+
+  return `
+
+    <div class="r-block">
+
+      <div class="r-title">
+
+        ${title}
+
+      </div>
+
+
+      <span class="r-status">
+
+        ${escapeHtml(
+          status ||
+          '-'
+        )}
+
+      </span>
+
+
+      <div class="r-interpretasi">
+
+        ${escapeHtml(
+          interpretasi ||
+          ''
+        )}
+
+      </div>
+
+
+      <div class="r-values">
+
+        ${values}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function rValue(
+  label,
+  value
+) {
+
+  return `
+
+    <div class="r-value">
+
+      <span>
+
+        ${escapeHtml(label)}
+
+      </span>
+
+      <strong>
+
+        ${typeof value === 'number'
+
+          ? formatNumber(value)
+
+          : escapeHtml(value)
+
+        }
+
+      </strong>
+
+    </div>
+
+  `;
+
+}
+
+
+function renderTags(
+  array,
+  emptyText
+) {
+
+  if (
+    !Array.isArray(array) ||
+    !array.length
+  ) {
+
+    return `
+
+      <span class="sheet-sub">
+
+        ${escapeHtml(emptyText)}
+
+      </span>
+
+    `;
+
+  }
+
+
+  return array.map(
+    function(item) {
+
+      return `
+
+        <span class="tag">
+
+          ${escapeHtml(item)}
+
+        </span>
+
+      `;
+
+    }
+  ).join('');
+
+}
+
+
+function detailMini(
+  label,
+  value
+) {
+
+  return `
+
+    <div class="detail-box">
+
+      <span>
+
+        ${escapeHtml(label)}
+
+      </span>
+
+      <strong>
+
+        ${escapeHtml(
+          value === undefined ||
+          value === null ||
+          value === ''
+            ? '-'
+            : value
+        )}
+
+      </strong>
+
+    </div>
+
+  `;
+
+}
+
+
+function detailFull(
+  label,
+  value,
+  normalWeight
+) {
+
+  return `
+
+    <div
+      class="detail-box"
+      style="margin-top:10px"
+    >
+
+      <span>
+
+        ${escapeHtml(label)}
+
+      </span>
+
+      <strong
+        ${normalWeight
+          ? 'style="font-weight:500"'
+          : ''
+        }
+      >
+
+        ${escapeHtml(
+          value ||
+          '-'
+        )}
+
+      </strong>
+
+    </div>
+
+  `;
+
+}
+
+
+/* HELPERS */
 
 function value(id) {
 
   return document
     .getElementById(id)
     .value;
+
+}
+
+
+function valueSet(
+  id,
+  value
+) {
+
+  document
+    .getElementById(id)
+    .value = value;
+
+}
+
+
+function text(
+  id,
+  value
+) {
+
+  document
+    .getElementById(id)
+    .textContent = value;
+
+}
+
+
+function addOption(
+  select,
+  value,
+  label
+) {
+
+  const option =
+    document.createElement(
+      'option'
+    );
+
+
+  option.value = value;
+
+  option.textContent = label;
+
+
+  select.appendChild(
+    option
+  );
 
 }
 
@@ -4929,6 +5264,45 @@ function priorityEmoji(status) {
 }
 
 
+function statusEmoji(level) {
+
+  const angka =
+    Number(level || 0);
+
+
+  if (angka === 0) {
+
+    return '⚪';
+
+  }
+
+
+  if (angka === 1) {
+
+    return '🔵';
+
+  }
+
+
+  if (angka === 2) {
+
+    return '🟡';
+
+  }
+
+
+  if (angka === 3) {
+
+    return '🟢';
+
+  }
+
+
+  return '✅';
+
+}
+
+
 function trendClass(status) {
 
   if (
@@ -4977,6 +5351,22 @@ function formatTrend(value) {
 }
 
 
+function formatPercent(value) {
+
+  return Number(
+    value || 0
+  )
+  .toLocaleString(
+    'id-ID',
+    {
+      maximumFractionDigits:1
+    }
+  ) +
+  '%';
+
+}
+
+
 function formatNumber(value) {
 
   return Number(
@@ -5003,8 +5393,7 @@ function formatDate(value) {
 
 
   if (
-    /^\d{4}$/
-      .test(text)
+    /^\d{4}$/.test(text)
   ) {
 
     return text;
@@ -5014,12 +5403,15 @@ function formatDate(value) {
 
   const date =
     new Date(
+
       text +
+
       (
         text.includes('T')
           ? ''
           : 'T00:00:00'
       )
+
     );
 
 
@@ -5034,21 +5426,19 @@ function formatDate(value) {
   }
 
 
-  return date.toLocaleDateString(
+  return date
+    .toLocaleDateString(
+      'id-ID',
+      {
 
-    'id-ID',
+        day:'numeric',
 
-    {
+        month:'short',
 
-      day: 'numeric',
+        year:'numeric'
 
-      month: 'short',
-
-      year: 'numeric'
-
-    }
-
-  );
+      }
+    );
 
 }
 
@@ -5126,10 +5516,9 @@ function showToast(
 ) {
 
   const toast =
-    document
-      .getElementById(
-        'toast'
-      );
+    document.getElementById(
+      'toast'
+    );
 
 
   toast.textContent =
@@ -5137,6 +5526,7 @@ function showToast(
 
 
   toast.className =
+
     isError
 
       ? 'toast error'
@@ -5170,4 +5560,5 @@ function showToast(
 
 
 </body>
+
 </html>
